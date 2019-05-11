@@ -24,7 +24,8 @@ class MainFrame extends JFrame {
 
 public class ManageGUI {
     /* 테스트용 Main 메소드 */
-    public static void main(String[] args){
+    public static void main(String[] args)
+    {
         MainFrame main_frame=new MainFrame();
     }
 }

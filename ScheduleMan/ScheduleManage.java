@@ -1,20 +1,42 @@
 package ScheduleMan;
 
 import DataClass.Task;
+import DataClass.Team_Member;
+
+import java.util.ArrayList;
 
 public class ScheduleManage{
-    static public void addTask(int id, String task_name, String description, int start_year, int start_month, int start_day, int end_year, int end_month, int end_day, String state, int hierarchy){
-        Task task=new Task(id, task_name, description, start_year, start_month, start_day, end_year, end_month, end_day, state, hierarchy);
-        /* 타 모듈들로 객체를 전달하는 함수 */
-        syncDB(task);
-        broadcastTask(task);
+
+    /* Tasklist에서 받아온 task 목록을 저장하는 변수값. 현재 유저의 task list */
+    public static ArrayList<Task> current_user_task_list;
+
+    private static Task searchFromTaskList(int id){
+        for(Task t : current_user_task_list){
+            if(t.getId()==id){
+                return t;
+            }
+        }
+        return null;    // 존재하지 않을시 null return
+    }
+
+    static public void addTask(Task t){
+        current_user_task_list.add(t);
+        syncDB();
     }
 
     static public void deleteTask(int id){
-        /* id를 통해 firebase의 DB 내 검색해서 지우는 함수 */
+        Task target = searchFromTaskList(id);
+        if(!current_user_task_list.contains(target)){
+            System.out.println("해당 Task가 존재하지 않습니다.");
+        }
+        else{
+            current_user_task_list.remove(target);
+        }
+        syncDB();
     }
 
     static public void updateTask(int id){
+        Task target = searchFromTaskList(id);
         /* id를 통해 firebase의 DB 내 검색해서 가져오는 함수 */
         // syncDB();
     }
@@ -24,14 +46,9 @@ public class ScheduleManage{
         return null; // 임시값
     }
 
-    static private void syncDB(Task task){
-        /* firebase DB와 동기화하는 함수 */
+    static private void syncDB(){
+        /* firebase DB와 동기화하는 함수. id가 자신인 값만 가져온다. */
     }
-
-    static private void broadcastTask(Task task){
-        /* 생성된 Task 객체를 타 모듈들로 전달해주는 함수 */
-    }
-
 
 }
 
