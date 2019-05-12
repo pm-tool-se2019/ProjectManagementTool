@@ -146,18 +146,20 @@ public class Task {
         this.state = input_state;
     }
 
-    public states getState(){
-        return this.state;
+    public String getState(){
+        return this.state.name();
     }
 
 
 
-
 // 디버깅용 main 코드. 필요할 시 주석 제거하고 사용하면 됨.
-/*    public static void main(String args[]) {
-        DataClass.Task a = new DataClass.Task(1,"task1","sample",2008,5,12,2008,5,20,"DONE",1);
-        System.out.println(a.gettaskName());
-        System.out.println(a.getState());*/
+/*
+    public static void main(String args[]) {
+        DataClass.Task a = new DataClass.Task(1, "task1", "sample", 2008, 5, 12, 2008, 5, 20, "TODO", 1);
+        System.out.println(a.getState().getClass());
+        System.out.println(a.getState());
+    }
+*/
 
 /*        if(a.setState("sds")){           // 이 곳에 값을 넣어서 확인해 봅시다.
             System.out.println(a.getState());
