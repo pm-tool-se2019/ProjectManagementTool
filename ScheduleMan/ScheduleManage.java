@@ -20,7 +20,6 @@ public class ScheduleManage{
     }
 
     static public void addTask(Task t){
-        /* t에 관련된 인자들을 input으로 입력받아 각 멤버 변수에 할당하는 함수 */
         current_user_task_list.add(t);
         syncDB();
     }
@@ -48,7 +47,7 @@ public class ScheduleManage{
     }
 
     static private void syncDB(){
-        /* firebase DB와 동기화하는 함수. user id가 자신인 값만 가져온다. */
+        /* firebase DB와 동기화하는 함수. id가 자신인 값만 가져온다. */
     }
 
 }
