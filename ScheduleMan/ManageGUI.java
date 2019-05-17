@@ -3,6 +3,7 @@ package ScheduleMan;
 import javax.swing.*;
 import java.awt.*;
 
+// Will Use JavaFX
 class MainFrame extends JFrame {
 
     private JButton addBtn= new JButton("업무 추가");
