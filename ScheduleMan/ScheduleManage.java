@@ -50,6 +50,11 @@ public class ScheduleManage{
         /* firebase DB와 동기화하는 함수. id가 자신인 값만 가져온다. */
     }
 
+    static private void broadcastTask(Task task){
+        /* 생성된 Task 객체를 타 모듈들로 전달해주는 함수 */
+    }
+
+
 }
 
 
