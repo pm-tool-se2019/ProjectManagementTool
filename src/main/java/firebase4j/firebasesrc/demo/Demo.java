@@ -19,10 +19,10 @@ public class Demo {
 
 		
 		// get the base-url (ie: 'http://gamma.firebase.com/username')
-		String firebase_baseUrl = "https://cau2019se-pmt.firebaseio.com/";
+		String firebase_baseUrl = "";
 
 		// get the api-key (ie: 'tR7u9Sqt39qQauLzXmRycXag18Z2')
-		String firebase_apiKey = "AIzaSyAdirf7c8a8puDR896DaliNhXVC7KrV8jw";
+		String firebase_apiKey = "";
 
 		for( String s : args ) {
 
