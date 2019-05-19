@@ -1,7 +1,6 @@
 package ScheduleMan;
 
 import javax.swing.*;
-import java.awt.*;
 
 // Will use javaFX
 class MainFrame extends JFrame {
