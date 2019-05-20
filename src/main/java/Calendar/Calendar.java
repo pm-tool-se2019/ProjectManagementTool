@@ -4,36 +4,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/*
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+*/
 import DataClass.Task;
-
-class Date{
-    private int year;
-    private int month;
-    private int day;
-
-    private ArrayList<Task> task_list;
-
-    Date(){
-        this.year = 1900;
-        this.month = 1;
-        this.day = 1;
-        task_list = new ArrayList<Task>();
-    }
-
-    Date(int year, int month, int day){
-        this.year = year;
-        this.month = month;
-        this.day = day;
-        this.task_list = new ArrayList<Task>();
-    }
-
-    Date(int year, int month, int day, ArrayList<Task> task_list){
-        this.year = year;
-        this.month = month;
-        this.day = day;
-        this.task_list = task_list;
-    }
-}
 
 class CalendarDataManager{
     final private int calLastDateOfMonth[]={31,28,31,30,31,30,31,31,30,31,30,31};
@@ -47,18 +23,27 @@ class MyCalendar {
     private Calendar calendar;
     private ArrayList<Task> task_list;
 
+    // Now Date
+    private int now_year;
+    private int now_month;
+    private int now_day;
+    // Pointing(
 
     //Constructor Of Calendar class
     //Take task_list and make calendar
-    MyCalendar(ArrayList<Task> task_list){
+    MyCalendar(ArrayList<Task> task_list) {
         this.task_list = task_list;
+        this.calendar = Calendar.getInstance();
+        this.now_year = calendar.set(Calendar.);
     }
 
     //Default Constructor.
     //List of taks will be empty arraylist<Task>
-    MyCalendar(){
+    MyCalendar() {
         this.task_list = new ArrayList<Task>();
+        this.calendar = Calendar.getInstance();
     }
+}
 
 
 
