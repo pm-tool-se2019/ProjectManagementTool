@@ -1,13 +1,13 @@
-package firebase4j.firebasesrc.demo;
+package ScheduleMan.firebase4j.firebasesrc.demo;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import src.main.java.firebase4j.firebasesrc.error.JacksonUtilityException;
-import src.main.java.firebase4j.firebasesrc.model.FirebaseResponse;
-import src.main.java.firebase4j.firebasesrc.service.Firebase;
-import src.main.java.firebase4j.firebasesrc.error.FirebaseException;
+import ScheduleMan.firebase4j.firebasesrc.error.JacksonUtilityException;
+import ScheduleMan.firebase4j.firebasesrc.model.FirebaseResponse;
+import ScheduleMan.firebase4j.firebasesrc.service.Firebase;
+import ScheduleMan.firebase4j.firebasesrc.error.FirebaseException;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
