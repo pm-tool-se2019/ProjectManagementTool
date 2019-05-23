@@ -1,4 +1,4 @@
-package firebase4j.firebasesrc.util;
+package ScheduleMan.firebase4j.firebasesrc.util;
 
 import java.io.StringWriter;
 import java.io.Writer;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import firebase4j.firebasesrc.error.JacksonUtilityException;
+import ScheduleMan.firebase4j.firebasesrc.error.JacksonUtilityException;
 
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
