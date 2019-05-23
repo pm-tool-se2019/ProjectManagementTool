@@ -9,7 +9,7 @@ public class TaskListFuncs {
     static public void TaskListFuncs(){
 
     }
-    public static void main (String args[]){
+    public static void main (String args[]){ // 혼자 재대로 작동하는지 돌려보기 위한 시험용 메인함수
         ArrayList memberList = new ArrayList<Team_Member>();
         Team_Member member1 = new Team_Member();
         Team_Member member2 = new Team_Member();
@@ -32,7 +32,7 @@ public class TaskListFuncs {
     }
 
 
-    static public void showTodoList(int member_id, ArrayList memberList) {
+    static public void showTodoList(int member_id, ArrayList memberList) {//해야할 일 (Todo)를 보여주는 기능-먼저 콘솔로 테스트 후 GUI로 구현 예정
 
         int member_index = 0;
         for(; member_index < memberList.size(); member_index ++){//먼저 맴버리스트 훓음
@@ -51,3 +51,7 @@ public class TaskListFuncs {
         }
     }
 }
+
+    static public void showDoingList(int member_id, ArrayList memberList) {}//하는 중의 일(Doing)를 보여주는 기능-먼저 콘솔로 테스트 후 GUI로 구현 예정
+    static public void showDoneList(int member_id, ArrayList memberList) {}//끝난 일(Done)를 보여주는 기능-먼저 콘솔로 테스트 후 GUI로 구현 예정
+    static public void AlarmTodayTask(int member_id, ArrayList memberList) {}//오늘 할 업무를 따로 알람으로 알려주는 기능
