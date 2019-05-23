@@ -34,16 +34,16 @@ public class TaskListFuncs {
 
     static public void showTodoList(int member_id, ArrayList memberList) {//The method for showing 'Todo' list, after checking out with console window, GUI is gonna be implemented 
         int member_index = 0;
-        for(; member_index < memberList.size(); member_index ++){//먼저 맴버리스트 훓음
+        for(; member_index < memberList.size(); member_index ++){//The first, checking each member in the order.
 
-            if( member_id == memberList.) {//찾고 있는 맴버일 경우
+            if( member_id == memberList.) {//If it is the member who is matched with the condition
                 for(int task_index = 0; task_index < getAssignedTask().size(); task_index ++){
-                    //그 맴버의 assgined_task훓음
+                    //check the member's assigned task list
                     Task tempTask = (Task)(memberList[member_index].getAssignedTask().get(task_index));
                     if( tempTask.getState() == "TODO" ){
                         for(int i = 0; i< memberList[member_index].getAssignedTask().size();i++)
                         System.out.println(memberList[member_index].getAssignedTask().get(i)+ "\n");
-                        //해당 task 출력
+                        //output the task
                     }
                 }
             }
