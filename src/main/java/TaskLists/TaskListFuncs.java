@@ -9,7 +9,7 @@ public class TaskListFuncs {
     static public void TaskListFuncs(){
 
     }
-    public static void main (String args[]){ // 혼자 재대로 작동하는지 돌려보기 위한 시험용 메인함수
+    public static void main (String args[]){ //The temporary main function for testing whether other methods work well 
         ArrayList memberList = new ArrayList<Team_Member>();
         Team_Member member1 = new Team_Member();
         Team_Member member2 = new Team_Member();
@@ -32,19 +32,18 @@ public class TaskListFuncs {
     }
 
 
-    static public void showTodoList(int member_id, ArrayList memberList) {//해야할 일 (Todo)를 보여주는 기능-먼저 콘솔로 테스트 후 GUI로 구현 예정
-
+    static public void showTodoList(int member_id, ArrayList memberList) {//The method for showing 'Todo' list, after checking out with console window, GUI is gonna be implemented 
         int member_index = 0;
-        for(; member_index < memberList.size(); member_index ++){//먼저 맴버리스트 훓음
+        for(; member_index < memberList.size(); member_index ++){//The first, checking each member in the order.
 
-            if( member_id == memberList.) {//찾고 있는 맴버일 경우
+            if( member_id == memberList.) {//If it is the member who is matched with the condition
                 for(int task_index = 0; task_index < getAssignedTask().size(); task_index ++){
-                    //그 맴버의 assgined_task훓음
+                    //check the member's assigned task list
                     Task tempTask = (Task)(memberList[member_index].getAssignedTask().get(task_index));
                     if( tempTask.getState() == "TODO" ){
                         for(int i = 0; i< memberList[member_index].getAssignedTask().size();i++)
                         System.out.println(memberList[member_index].getAssignedTask().get(i)+ "\n");
-                        //해당 task 출력
+                        //output the task
                     }
                 }
             }
@@ -52,6 +51,6 @@ public class TaskListFuncs {
     }
 }
 
-    static public void showDoingList(int member_id, ArrayList memberList) {}//하는 중의 일(Doing)를 보여주는 기능-먼저 콘솔로 테스트 후 GUI로 구현 예정
-    static public void showDoneList(int member_id, ArrayList memberList) {}//끝난 일(Done)를 보여주는 기능-먼저 콘솔로 테스트 후 GUI로 구현 예정
-    static public void AlarmTodayTask(int member_id, ArrayList memberList) {}//오늘 할 업무를 따로 알람으로 알려주는 기능
+    static public void showDoingList(int member_id, ArrayList memberList) {}//The method for showing 'Doing' list. The GUI plan is same with the method 'showTodoList'
+    static public void showDoneList(int member_id, ArrayList memberList) {}//The method for showing 'Done' list. The GUI plan is same with the method 'showTodoList'
+    static public void AlarmTodayTask(int member_id, ArrayList memberList) {}//The method for users to alarm their each tasks to do today
