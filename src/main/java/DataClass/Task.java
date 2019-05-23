@@ -58,7 +58,7 @@ public class Task {
         return start_year;
     }
 
-    public void setStartYear(int start_year) {      // // 이론상 모든 정수값 가능하므로 검증 불필요
+    public void setStartYear(int start_year) {   
         this.start_year = start_year;
     }
 
