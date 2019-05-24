@@ -1,3 +1,39 @@
+# Project Management Tool
+## Project Description
+ * This tools is used to managing/scheduling some tiny team project effectively.
+
+## Main Feature
+ * This program is consisted of `Schedule Manager, Calendar, TaskList, Search, Timeline diagram`.
+ * This diagram shows structure of our program.
+
+
+ * Our program has real-time synchronization of database between all team members with Firebase Database.
+
+## How to use
+ * First, Login to our program with account registered in database.(We will not serve login in MVP version)
+ * At the main dashborad,
+
+## How to obtain and install the software
+ * Clone our repository and just build.
+ * The command to clone our repository is
+ ```git clone https://github.com/pm-tool-se2019/Source```
+ * You need to use `Maven` to install all dependency to execute our program.
+ * If you use `intellij` IDE, you can get the dependency library easily.
+
+## How to run our software
+ * Just build and execute.
+
+## How to report a bug
+ * We are open to receive contribution or issues for our program.
+ * Please don't hesitate to report a bug or to give an opinion to our project :).
+ * Just write `issue` of gitHub repository. but, I recommend to write specified issues to get exact reply.
+
+## Dependency
+ * Our program uses `JavaFX`, `firebase4j`.
+
+
+----
+
 # Source
 실제 개발된 소스 코드를 모아두는 곳입니다.
 
