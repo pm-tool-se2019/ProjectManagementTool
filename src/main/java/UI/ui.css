@@ -2,5 +2,11 @@
 	-fx-background-color: #fff;
 }
 .sidebar{
-	-fx-background-color: #333645
+	-fx-background-color: #333645;
+}
+.sidebtn{
+    -fx-background-color: transparent;
+}
+.sidebtn:hover{
+    -fx-background-color: #202332;
 }
