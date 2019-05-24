@@ -1,4 +1,4 @@
-package Timeline;
+package TimeLine;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,18 +10,18 @@ import DataClass.Task;
 public class TimelineManage {
 	
 	
-	public ArrayList<Task> task_list;
-    static public void TimelineManage(){this.task_list = new ArrayList<Task>();}//default empty
+	public static ArrayList<Task> task_list;
+    public TimelineManage(){task_list = new ArrayList<Task>();}//default empty
     
     static public void TimelinManage(ArrayList<Task> list){
-    	this.task_list = list;
+    	task_list = list;
     	ByStartDate start = new ByStartDate();//to draw timeline, sort the tasklist by start date
         Collections.sort(task_list, start);
     }
     
     static public void search(int Date){//passing Date input 
     	Search search = new Search();
-    	ArrayList<Integer> resulthArr = search.searchByDate(this.task_list, Date);
+    	ArrayList<Integer> resulthArr = search.searchByDate(task_list, Date);
     }
     
     private void sortByEndDate() {//provide users - different way to draw the timeline
@@ -33,7 +33,6 @@ public class TimelineManage {
 
 
 class ByStartDate implements Comparator<Task> {//using comparator - date sort by start date
-    @Override
     public int compare(Task s1, Task s2) {
 		if (s1.getStartYear() < s2.getStartYear()) {
 			return -1;
@@ -59,7 +58,6 @@ class ByStartDate implements Comparator<Task> {//using comparator - date sort by
  
 
 class ByEndDate implements Comparator<Task> {//using comparator - date sort by end date point
-    @Override
     public int compare(Task s1, Task s2) {
 		if (s1.getEndYear() < s2.getEndYear()) {
 			return -1;
@@ -84,14 +82,14 @@ class ByEndDate implements Comparator<Task> {//using comparator - date sort by e
  
 }
 
-public class Search{
+class Search{
 
 	public ArrayList<Integer> searchByDate(ArrayList<Task> task_list, int day){//search tasklist by day
 		int index = 0;
-		ArrayList<Integer> indexNumbers = new ArrayList();
+		ArrayList<Integer> indexNumbers = new ArrayList<Integer>();
     	for(Task task:task_list) {
     		index++;
-    		if(task.getEndDay()== date || task.getEndDay()==date){
+    		if(task.getEndDay()== day || task.getEndDay()==day){
     			indexNumbers.add(index);
     		}
     	}
@@ -99,13 +97,12 @@ public class Search{
 	}
 	public ArrayList<Integer> searchByDate(ArrayList<Task> task_list, int month, int day){
 		// get any of data(year,month,date)
-		int index = 0;
-    	ArrayList indexNumbers = new ArrayList();
-    	return indexNumbers;
+		return null;
 	}
 	
     public ArrayList<Integer> searchByDate(ArrayList<Task> task_list, int year, int month, int day){
     	// get any of data(year,month,date)
+    	return null;
     }
 }
 
