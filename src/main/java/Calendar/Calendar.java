@@ -44,7 +44,3 @@ class MyCalendar {
         this.calendar = Calendar.getInstance();
     }
 }
-
-
-
-

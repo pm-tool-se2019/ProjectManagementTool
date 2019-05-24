@@ -30,7 +30,6 @@ public class Team_Member {
     }
 
     public void setPhone(String phone) {
-        /* 정규식을 통해 번호 양식 검증하는 routine 추가 예정 */
         this.phone = phone;
     }
 
@@ -39,7 +38,6 @@ public class Team_Member {
     }
 
     public void setEmail(String email) {
-        /* 정규식을 통해 이메일 양식 검증하는 routine 추가 예정 */
         this.email = email;
     }
 
@@ -51,5 +49,4 @@ public class Team_Member {
         this.assigned_task.add(newtask);
     }
 
-    /* deleteTask 등 나중에 추가 */
 }

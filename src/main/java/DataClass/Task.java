@@ -1,4 +1,4 @@
-package DataClass;// src.main.java.DataClass.Task 객체를 정의하는 Class
+package DataClass;// Define Task Class
 // Written by Song Jun ho(RE-A).
 
 public class Task {
@@ -28,6 +28,8 @@ public class Task {
         this.hierarchy = hierarchy;
     }
 
+    private enum states {TODO, DOING, DONE}
+
     public String getTaskName() {
         return task_name;
     }
@@ -35,8 +37,6 @@ public class Task {
     public void setTaskName(String task_name) {
         this.task_name = task_name;
     }
-
-    private enum states {TODO, DOING, DONE}
 
     public int getId() {
         return id;
@@ -58,7 +58,7 @@ public class Task {
         return start_year;
     }
 
-    public void setStartYear(int start_year) {      // // 이론상 모든 정수값 가능하므로 검증 불필요
+    public void setStartYear(int start_year) {   
         this.start_year = start_year;
     }
 
@@ -152,7 +152,7 @@ public class Task {
 
 
 
-// 디버깅용 main 코드. 필요할 시 주석 제거하고 사용하면 됨.
+//  For debugging this module.
 /*
     public static void main(String args[]) {
         src.main.java.DataClass.Task a = new src.main.java.DataClass.Task(1, "task1", "sample", 2008, 5, 12, 2008, 5, 20, "TODO", 1);
@@ -161,7 +161,7 @@ public class Task {
     }
 */
 
-/*        if(a.setState("sds")){           // 이 곳에 값을 넣어서 확인해 봅시다.
+/*        if(a.setState("sds")){
             System.out.println(a.getState());
         }
         else{

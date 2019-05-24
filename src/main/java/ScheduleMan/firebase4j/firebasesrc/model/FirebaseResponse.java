@@ -1,4 +1,4 @@
-package firebase4j.firebasesrc.model;
+package ScheduleMan.firebase4j.firebasesrc.model;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
