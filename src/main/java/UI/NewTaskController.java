@@ -21,11 +21,16 @@ public class NewTaskController implements Initializable {
     private AnchorPane parent;
     @FXML
     private Button addButton, cancelButton;
-
+    private Stage stage;
     //implements components, Controller of Main Scene Initial State
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         makeStageDragable();
+    }
+
+    //set stage, this function SHOULD be used in parent Class
+    public void setStage(Stage stage){
+        this.stage = stage;
     }
     //set AddNew components Draggable
      private void makeStageDragable() {
@@ -39,22 +44,22 @@ public class NewTaskController implements Initializable {
         parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Controller.addStage.setX(event.getScreenX() - xOffset);
-                Controller.addStage.setY(event.getScreenY() - yOffset);
-                Controller.addStage.setOpacity(0.7f);
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+                stage.setOpacity(0.7f);
             }
         });
         parent.setOnDragDone((e) -> {
-            Controller.addStage.setOpacity(1.0f);
+            stage.setOpacity(1.0f);
         });
         parent.setOnMouseReleased((e) -> {
-            Controller.addStage.setOpacity(1.0f);
+            stage.setOpacity(1.0f);
         });
 
     }
     //addNew stage shutdown
     public void cancelButtonClicked(){
-        Controller.addStage.close();
-        Controller.addStage = new Stage();
+        this.stage.close();
+        this.stage=null;
     }
 }

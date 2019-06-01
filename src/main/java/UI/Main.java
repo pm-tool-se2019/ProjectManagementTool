@@ -10,16 +10,18 @@ import javafx.scene.Parent;
 //application main
 public class Main extends Application {
     //main stage call
-    public static Stage stage = null;
-
-    //public static Stage newStage =null;
+    //private Stage stage = null;
+    //Stage stage;
+    private Stage stage =null;
     @Override
     public void start(Stage stage) throws Exception {
-        Parent main = FXMLLoader.load(getClass().getResource("Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Main.fxml"));
+        Parent main = (Parent)fxmlLoader.load();
         Scene scene = new Scene(main);
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         this.stage = stage;
+        ((Controller) fxmlLoader.getController()).setStage(stage);
         stage.show();
     }
 

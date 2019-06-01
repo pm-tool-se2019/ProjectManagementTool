@@ -2,11 +2,39 @@
 	-fx-background-color: #fff;
 }
 .sidebar{
-	-fx-background-color: #333645;
+	-fx-background-color: #1385ff;
 }
 .sidebtn{
     -fx-background-color: transparent;
 }
 .sidebtn:hover{
-    -fx-background-color: #202332;
+    -fx-background-color: #00336a;
+}
+.mainCloseButton{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.mainCloseButtonASI{
+    -fx-fill: #000000;
+}
+.mainCloseButton:hover .mainCloseButtonASI{
+    -fx-fill: #ff1818;
+}
+.mainAddNewBotton{
+    -fx-background-color: transparent;
+    -fx-border-color:transparent;
+    -fx-text-fill: #1385ff;
+}
+.mainAddNewBottonASI{
+    -fx-fill: #1385ff;
+}
+.mainAddNewBotton:hover{
+    -fx-text-fill: #00336a;
+}
+.mainAddNewBotton:hover .mainAddNewBottonASI{
+    -fx-fill: #00336a;
+}
+.justTransparent{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
 }
