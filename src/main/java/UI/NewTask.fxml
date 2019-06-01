@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id = "parent" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.UI.NewTaskController">
+   <children>
+      <HBox alignment="CENTER_RIGHT" layoutY="359.0" prefHeight="50.0" prefWidth="720.0" style="-fx-background-color: #FFFFFF;" AnchorPane.topAnchor="359.0">
+         <children>
+            <Button fx:id = "addButton" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: c7eaff;" text="Add" />
+            <Button fx:id = "cancelButton" onAction="#cancelButtonClicked" cancelButton="true" layoutX="500.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: c7eaff;" text="Cancel">
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <SplitPane dividerPositions="0.18996415770609318" layoutY="64.0" orientation="VERTICAL" prefHeight="281.0" prefWidth="720.0" style="-fx-background-color: #FFFFFF;" AnchorPane.topAnchor="64.0">
+         <items>
+            <HBox alignment="CENTER_LEFT" centerShape="false" fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="712.0" scaleShape="false">
+               <children>
+                  <TextField maxHeight="-Infinity" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="120.0" promptText="Task Name">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="300.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="250.0" prefWidth="718.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <TextArea minHeight="-Infinity" minWidth="-Infinity" prefHeight="203.0" prefWidth="670.0" promptText="Descriptions..">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                     </HBox.margin>
+                  </TextArea>
+               </children>
+            </HBox>
+         </items>
+      </SplitPane>
+      <HBox prefHeight="66.0" prefWidth="720.0" style="-fx-background-color: #20abff;" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="WHITE" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="2.0" text="ADD NEW TASK" textAlignment="CENTER" wrappingWidth="184.12109375">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="20.0" top="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Corbel Light" size="24.0" />
+               </font>
+            </Text>
+         </children>
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" />
+         </effect>
+      </HBox>
+   </children>
+</AnchorPane>
