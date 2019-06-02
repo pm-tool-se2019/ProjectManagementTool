@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-/*
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-*/
+
+
 import DataClass.Task;
 
 class CalendarDataManager{
@@ -34,7 +35,6 @@ class MyCalendar {
     MyCalendar(ArrayList<Task> task_list) {
         this.task_list = task_list;
         this.calendar = Calendar.getInstance();
-        this.now_year = calendar.set(Calendar.);
     }
 
     //Default Constructor.

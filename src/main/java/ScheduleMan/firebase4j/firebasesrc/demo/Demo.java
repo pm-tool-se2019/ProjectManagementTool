@@ -13,34 +13,10 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 
 public class Demo {
-
+	public static String firebase_baseUrl = "";
+	public static String firebase_apiKey = "";
 
 	public static void main(String[] args) throws FirebaseException, JsonParseException, JsonMappingException, IOException, JacksonUtilityException {
-
-		
-		// get the base-url (ie: 'http://gamma.firebase.com/username')
-		String firebase_baseUrl = "";
-
-		// get the api-key (ie: 'tR7u9Sqt39qQauLzXmRycXag18Z2')
-		String firebase_apiKey = "";
-
-		for( String s : args ) {
-
-			if( s == null || s.trim().isEmpty() ) continue;
-			String[] split = s.trim().split( "=" );
-
-			if( split[0].equals("baseUrl") ) {
-				firebase_baseUrl = split[1];
-			}
-			else if( split[0].equals("apiKey") ) {
-				firebase_apiKey = split[1];
-			}
-
-
-		}
-		if( firebase_baseUrl == null || firebase_baseUrl.trim().isEmpty() ) {
-			throw new IllegalArgumentException( "Program-argument 'baseUrl' not found but required" );
-		}
 
 
 		// create the firebase
