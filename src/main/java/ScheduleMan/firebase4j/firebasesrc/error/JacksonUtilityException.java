@@ -1,4 +1,4 @@
-package firebase4j.firebasesrc.error;
+package ScheduleMan.firebase4j.firebasesrc.error;
 
 import org.apache.log4j.Logger;
 
