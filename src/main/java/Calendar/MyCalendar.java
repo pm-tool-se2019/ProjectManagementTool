@@ -2,9 +2,6 @@ package Calendar;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,10 +19,11 @@ class MyCalendar {
 
     //Information of calendar
     private Date[][] calendar_dates = new Date[CAL_HEIGHT][CAL_WIDTH];
-    private boolean 
+
+    private int howManyTask[][] = new int[CAL_HEIGHT][CAL_WIDTH];
+
     private LocalDate local_date_time;
     private ArrayList<Task> task_list;
-
     // Now Date
     private LocalDate now;
     private int now_year;
@@ -49,6 +47,7 @@ class MyCalendar {
 
     //Default Constructor.
     //List of taks will be empty arraylist<Task>
+
     MyCalendar() {
         this.task_list = new ArrayList<Task>();
         this.local_date_time = LocalDate.now();
