@@ -1,20 +1,31 @@
-package UI;
+package main.java.UI;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.io.IOException;
+import javafx.scene.Parent;
 
 public class Main extends Application {
 
-    private Stage primaryStage;
-    //private BorderPane rootLayout;
+    public static Stage stage = null;
 
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent main = FXMLLoader.load(getClass().getResource("Main.fxml"));
+        Scene scene = new Scene(main);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        this.stage = stage;
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+    //private BorderPane rootLayout;
+/*
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -30,7 +41,7 @@ public class Main extends Application {
     public void showMain() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../main/java/UI/Main.fxml"));
+            loader.setLocation(Main.class.getResource("Main.fxml"));
             AnchorPane main = (AnchorPane) loader.load();
 
             Scene scene = new Scene(main);
@@ -50,4 +61,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    */
+
 }
