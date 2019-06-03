@@ -1,4 +1,4 @@
-package Calendar;
+package main.java.Calendar;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import DataClass.Task;
+import main.java.DataClass.Task;
 
 class CalendarDataManager{
     final private int calLastDateOfMonth[]={31,28,31,30,31,30,31,31,30,31,30,31};
