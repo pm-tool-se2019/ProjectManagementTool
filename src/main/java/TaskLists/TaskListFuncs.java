@@ -1,10 +1,9 @@
-package TaskLists;
+package main.java.TaskLists;
 import java.util.ArrayList;
-import DataClass.Task;
-import DataClass.Team_Member;
+import main.java.DataClass.*;
 
 
-
+/*
 public class TaskListFuncs {
     static public void TaskListFuncs(){
 
@@ -54,3 +53,4 @@ public class TaskListFuncs {
     static public void showDoingList(int member_id, ArrayList memberList) {}//The method for showing 'Doing' list. The GUI plan is same with the method 'showTodoList'
     static public void showDoneList(int member_id, ArrayList memberList) {}//The method for showing 'Done' list. The GUI plan is same with the method 'showTodoList'
     static public void AlarmTodayTask(int member_id, ArrayList memberList) {}//The method for users to alarm their each tasks to do today
+*/

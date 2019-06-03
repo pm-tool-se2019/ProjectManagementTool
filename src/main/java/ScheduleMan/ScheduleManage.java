@@ -1,6 +1,6 @@
-package ScheduleMan;
+package main.java.ScheduleMan;
 
-import DataClass.Task;
+import main.java.DataClass.*;
 
 import java.util.ArrayList;
 

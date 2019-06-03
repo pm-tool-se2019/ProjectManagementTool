@@ -1,4 +1,4 @@
-package DataClass;// Define Task Class
+package main.java.DataClass;// Define Task Class
 // Written by Song Jun ho(RE-A).
 
 public class Task {
