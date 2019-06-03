@@ -38,3 +38,41 @@
     -fx-background-color: transparent;
     -fx-border-color: transparent;
 }
+.calendarButton{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.calendarButtonASI{
+    -fx-background-color : #FFFFFF;
+    -fx-border-color: #CECECE;
+}
+
+.calendarButtonASI:hover{
+    -fx-background-color: #CECECE;
+}
+.calendarMovementButton{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.calendarMovementButtonASI{
+    -fx-fill: #000000;
+}
+.calendarMovementButton:hover .calendarMovementButtonASI{
+    -fx-fill: #A4A4A4;
+}
+.calendarDateButton{
+     -fx-font-size : 20pt;
+     -fx-background-color: #FFFFFF;
+     -fx-border-color: transparent;
+}
+.calendarDateButton:hover{
+    -fx-background-color: #CECECE;
+}
+.calendarDateButton .list-view{
+    -fx-font-size : 15pt;
+}
+
+.calendarDateButton .list-view .list-cell{
+    -fx-padding: -1 -1 -1 -1;
+}
