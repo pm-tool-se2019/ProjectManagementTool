@@ -20,6 +20,7 @@ public class Main extends Application {
         Scene scene = new Scene(main);
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
+        ResizeHelper.addResizeListener(stage);
         this.stage = stage;
         ((Controller) fxmlLoader.getController()).setStage(stage);
         stage.show();
