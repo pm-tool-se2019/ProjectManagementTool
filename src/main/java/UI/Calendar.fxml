@@ -44,14 +44,14 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="420.0" prefWidth="110.0">
                                  <children>
-                                    <Button fx:id="calendarLeftButton" onAction="#calendarLeftButtonClicked" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="calendarMovementButton" stylesheets="@ui.css">
+                                    <Button fx:id="calendarLeftButton" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#calendarLeftButtonClicked" prefHeight="50.0" prefWidth="50.0" styleClass="calendarMovementButton" stylesheets="@ui.css">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="CHEVRON_LEFT" size="50" styleClass="calendarMovementButtonASI" />
                                        </graphic>
                                     </Button>
                                  </children>
                               </VBox>
-                              <GridPane layoutX="110.0" prefHeight="420.0" prefWidth="630.0">
+                              <GridPane fx:id="calendarGridPane" layoutX="110.0" prefHeight="420.0" prefWidth="630.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -620,7 +620,7 @@
                               </GridPane>
                               <VBox alignment="CENTER" layoutX="740.0" prefHeight="420.0" prefWidth="110.0">
                                  <children>
-                                    <Button fx:id="calendarRightButton" onAction="#calendarRightButtonClicked" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="calendarMovementButton" stylesheets="@ui.css">
+                                    <Button fx:id="calendarRightButton" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#calendarRightButtonClicked" prefHeight="50.0" prefWidth="50.0" styleClass="calendarMovementButton" stylesheets="@ui.css">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="CHEVRON_RIGHT" size="50" styleClass="calendarMovementButtonASI" />
                                        </graphic>

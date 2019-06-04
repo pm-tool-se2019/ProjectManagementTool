@@ -34,7 +34,7 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox alignment="CENTER" minWidth="-Infinity" prefHeight="141.0" prefWidth="135.0" styleClass="sidebtn">
+            <HBox fx:id="sideBtnDashboard" alignment="CENTER" minWidth="-Infinity" prefHeight="141.0" prefWidth="135.0" styleClass="sidebtn">
                <children>
                   <Button fx:id="dashboardButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#showDashboard" prefWidth="135.0" styleClass="justTransparent">
                      <graphic>
@@ -59,7 +59,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="87.0" minWidth="-Infinity" prefHeight="141.0" prefWidth="135.0" styleClass="sidebtn">
+            <HBox fx:id="sideBtnCalendar" alignment="CENTER" layoutX="10.0" layoutY="87.0" minWidth="-Infinity" prefHeight="141.0" prefWidth="135.0" styleClass="sidebtn">
                <children>
                   <Button fx:id="calendarButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#showCalendar" prefWidth="135.0" styleClass="justTransparent">
                      <graphic>
@@ -84,7 +84,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="228.0" minWidth="-Infinity" prefHeight="141.0" prefWidth="135.0" styleClass="sidebtn">
+            <HBox fx:id="sideBtnTeam" alignment="CENTER" layoutX="10.0" layoutY="228.0" minWidth="-Infinity" prefHeight="141.0" prefWidth="135.0" styleClass="sidebtn">
                <children>
                   <Button fx:id="teamButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#showTeam" prefWidth="135.0" styleClass="justTransparent">
                      <graphic>
