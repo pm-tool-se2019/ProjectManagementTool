@@ -13,9 +13,12 @@ class CalendarDataManager{
     final private int calLastDateOfMonth[]={31,28,31,30,31,30,31,31,30,31,30,31};
 }
 
-class MyCalendar {
+public class MyCalendar {
     static final int CAL_WIDTH = 7;
     static final int CAL_HEIGHT = 6;
+
+    //Singleton Pattern
+    private static MyCalendar singleCalendar;
 
     //Information of calendar
     private Date[][] calendar_dates = new Date[CAL_HEIGHT][CAL_WIDTH];
@@ -55,5 +58,20 @@ class MyCalendar {
         this.now_month = local_date_time.getMonthValue();
         this.now_day = local_date_time.getDayOfMonth();
         this.now_date = local_date_time.getDayOfWeek();
+    }
+
+    static public MyCalendar getSingleCalendar(){
+        if(singleCalendar == null){
+            singleCalendar = new MyCalendar();
+
+        }
+        return singleCalendar;
+    }
+
+    static public MyCalendar getSingleCalendar(ArrayList<Task> task_list){
+        if(singleCalendar == null){
+            singleCalendar = new MyCalendar(task_list);
+        }
+        return singleCalendar;
     }
 }
