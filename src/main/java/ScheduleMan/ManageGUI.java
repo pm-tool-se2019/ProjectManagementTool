@@ -1,4 +1,4 @@
-package ScheduleMan;
+package main.java.ScheduleMan;
 
 import javax.swing.*;
 
