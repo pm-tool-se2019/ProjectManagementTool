@@ -1,5 +1,6 @@
 package main.java.ScheduleMan;
 
+import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
 import main.java.DataClass.Task;
 import java.io.UnsupportedEncodingException;
 
@@ -10,15 +11,20 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import main.java.ScheduleMan.firebase4j.firebasesrc.error.FirebaseException;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
+
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class ScheduleManage{
     // For Connect with Firebase remote DB
     public static String firebase_baseUrl = "https://cau2019se-pmt.firebaseio.com/";
 
     /* Current user's task list. This var will be shared with all of other modules. */
-    public static ArrayList<Task> current_user_task_list;
+    public static ArrayList<Task> current_user_task_list = new ArrayList<>();
 
     private static Task searchFromTaskList(int id){
         for(Task t : current_user_task_list){
@@ -58,6 +64,7 @@ public class ScheduleManage{
     }
 
     static public void updateTask(int id) throws UnsupportedEncodingException, FirebaseException {
+        // Updating the Task information.
         Task target = searchFromTaskList(id);
         if(target == null){
             target = fetchFromDB(id);
@@ -68,6 +75,11 @@ public class ScheduleManage{
     }
 
     static private Task fetchFromDB(int id) throws FirebaseException, UnsupportedEncodingException {
+        /*
+         Fetch specific Task from DB using task id.
+         Use when cannot find task from current_user_task_list.
+         Return Task or null(failed to find).
+        */
         Firebase firebase = new Firebase(firebase_baseUrl);
         FirebaseResponse response = firebase.get("/Task/"+(id));
         Gson gson = new Gson();
@@ -79,6 +91,27 @@ public class ScheduleManage{
         }
         Task receivedtask = gson.fromJson(task_json, Task.class);
         return receivedtask;
+    }
+    
+    static public void getAllTask() throws FirebaseException, UnsupportedEncodingException {
+        /*
+         Get all Tasks from firebase DB. It should be used when the program start. 
+         All tasks are saved at current_user_task_list.
+         
+         WARNING : Does not inspect when the database is empty.
+        */
+        Firebase firebase = new Firebase(firebase_baseUrl);
+        FirebaseResponse response = firebase.get("/Task/");
+        Gson gson = new Gson();
+        Map<String, Object> taskmap = response.getBody();
+
+        // Map -> json -> Task Process
+        for(String taskkey : taskmap.keySet()){
+            String jsonified = gson.toJson(taskmap.get(taskkey));
+            Task t = gson.fromJson(jsonified, Task.class);
+            current_user_task_list.add(t);
+        }
+
     }
 
 
@@ -106,27 +139,20 @@ public class ScheduleManage{
 //
 //        }
 
-        // DATA PULL TEST
-        // Data not found check -> equals("null").
-        // Because RawBody returns string "null" when failed to found data.
-
-//        int pull_id = 19;
-//        FirebaseResponse response = firebase.get("/Task/"+(pull_id));
-//        System.out.println(response);
-//        Gson gson = new Gson();
-//        String taskjson = response.getRawBody();
-//        System.out.println(taskjson);
-//        if(taskjson.equals("null")){
-//            System.out.println("Null");
-//            return;
+//        JsonObject tasks_as_json = new JsonParser().parse(taskjson).getAsJsonObject();
+//        System.out.println(tasks_as_json);
+//        JsonArray json_array= tasks_as_json.getAsJsonArray("Task");
+//
+//        for(int i=0; i<json_array.size();i++){
+//            Task t = gson.fromJson(json_array.get(i), Task.class);
+//            current_user_task_list.add(t);
 //        }
-//        Task receivedtask = gson.fromJson(taskjson, Task.class);
-//        System.out.println(receivedtask.getDescription()+ '\n' + receivedtask.getId() + '\n' + receivedtask.getState());
-
+//        System.out.println(current_user_task_list);
 //    }
 
 
 }
+
 
 
 
