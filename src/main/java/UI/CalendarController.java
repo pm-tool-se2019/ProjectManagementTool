@@ -31,11 +31,12 @@ import java.util.ResourceBundle;
 import main.java.Calendar.*;
 
 public class CalendarController implements Initializable {
-    //Singleton pattern 자바 ㅣㅅㅇ글톤
-    private static MyCalendar calendar = MyCalendar.getSingleCalendar();
+    //Singleton pattern
+    private static MyCalendar calendar;
 
     private ObservableList yearList= FXCollections.observableArrayList();
     private ObservableList monthList= FXCollections.observableArrayList();
+
     @FXML//button left, right    @FXML
     private ChoiceBox<Integer> calendarYearChoice, calendarMonthChoice;
 
@@ -55,7 +56,8 @@ public class CalendarController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {//initialize
-        loadMonthChoice();
+        calendar = MyCalendar.getSingleCalendar();
+        loadMonthChoice(calendar.);
         loadYearChoice();
         setCalendarButtonListener();
         setCalendarDate();
@@ -74,11 +76,11 @@ public class CalendarController implements Initializable {
             }
         });
     }
-    private void loadMonthChoice(){//initialize method
+    private void loadMonthChoice(int initializeMonth){//initialize method
         monthList.removeAll(monthList);
         monthList.addAll(1,2,3,4,5,6,7,8,9,10,11,12);
         calendarMonthChoice.getItems().addAll(monthList);
-        calendarMonthChoice.setValue(6);
+        calendarMonthChoice.setValue(initializeMonth);
         calendarMonthChoice.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -123,6 +125,7 @@ public class CalendarController implements Initializable {
             }
         }
     }
+
     private void setCalendarButtonArray(){
         calButton[0][0] = calendarButton0_0;
         calButton[0][1] = calendarButton0_1;
