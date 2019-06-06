@@ -60,6 +60,14 @@ public class MyCalendar {
         this.now_date = local_date_time.getDayOfWeek();
     }
 
+    public void addTaskToCalendar(){
+        //TODO
+    }
+
+    public int getNowMonthValue(){  return now_month;  }
+    public int getNowYear(){  return now_year;  }
+    public int getNowDayOfMonth()
+
     static public MyCalendar getSingleCalendar(){
         if(singleCalendar == null){
             singleCalendar = new MyCalendar();
