@@ -12,8 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.UI.TaskInfoController">
+<AnchorPane fx:id="parent" prefHeight="600.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.UI.TaskInfoController">
    <children>
       <VBox layoutX="220.0" layoutY="200.0" prefHeight="600.0" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -118,7 +117,7 @@
                   </VBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="420.0">
                      <children>
-                        <Button fx:id="taskInfoEditBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" styleClass="mainCloseButton" stylesheets="@ui.css" text="Edit">
+                        <Button fx:id="taskInfoEditBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" styleClass="defaultButton" stylesheets="@ui.css" text="Edit">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -126,7 +125,7 @@
                               <Font name="Corbel Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="taskInfoCloseBtn" onAction="#cancelButtonClicked" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" styleClass="mainCloseButton" stylesheets="@ui.css" text="Close">
+                        <Button fx:id="taskInfoCloseBtn" mnemonicParsing="false" onAction="#cancelButtonClicked" prefHeight="30.0" prefWidth="80.0" styleClass="defaultButton" stylesheets="@ui.css" text="Close">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>

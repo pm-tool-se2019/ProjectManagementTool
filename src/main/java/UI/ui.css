@@ -1,6 +1,14 @@
 .parent{
 	-fx-background-color: #fff;
 }
+.defaultButton{
+    -fx-background-color: #1385ff;
+    -fx-text-fill:#FFFFFF;
+}
+.defaultButton: hover{
+    -fx-background-color : #FFFFFF;
+    -fx-text-fill: #1385ff;
+}
 .sidebar{
 	-fx-background-color: #1385ff;
 }

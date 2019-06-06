@@ -37,9 +37,21 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         makeStageDragable();
+        if(isDashboardFirst==0){
         changeBackgroundOnHoverUsingEvents(sideBtnDashboard);
-        changeBackgroundOnHoverUsingEvents(sideBtnCalendar);
-        changeBackgroundOnHoverUsingEvents(sideBtnTeam);
+        }else{
+            sideBtnDashboard.setStyle("-fx-background-color: #00336a");
+        }
+        if(isCalendarFirst==0) {
+            changeBackgroundOnHoverUsingEvents(sideBtnCalendar);
+        }else{
+            sideBtnCalendar.setStyle("-fx-background-color: #00336a");
+        }
+        if(isTeamFirst==0) {
+            changeBackgroundOnHoverUsingEvents(sideBtnTeam);
+        }else {
+            sideBtnDashboard.setStyle("-fx-background-color: #00336a");
+        }
     }
     //set stage, this function SHOULD be used in parent Class
     public void setStage(Stage stage){
@@ -100,23 +112,59 @@ public class Controller implements Initializable {
         sideBtnCalendar.setStyle("-fx-background-color: #1385ff");
         sideBtnTeam.setStyle("-fx-background-color: #1385ff");
     }
-    @FXML
-    private void showDashboard() throws IOException{//Dashboard Button Clicked
-        setSideBtnInit();
-        sideBtnDashboard.setStyle("-fx-background-color: #00336a");
-        loadScene("Dashboard");
+
+    private void setButtonStateInit(){
+        isTeamFirst=0;
+        isCalendarFirst=0;
+        isDashboardFirst=0;
     }
+    private int isDashboardFirst = 0;
     @FXML
-    private void showCalendar()throws IOException{//Calendar Button Clicked
-        setSideBtnInit();
-        sideBtnCalendar.setStyle("-fx-background-color: #00336a");
-        loadScene("Calendar");
+    private void showDashboard() throws IOException {//Dashboard Button Clicked
+        if(isDashboardFirst ==0) {
+            setSideBtnInit();
+            sideBtnDashboard.setStyle("-fx-background-color: #00336a");
+            loadScene("Dashboard");
+            setButtonStateInit();
+            isDashboardFirst++;
+            return;
+        }else{
+            mainScene.getChildren().clear();
+            isDashboardFirst--;
+        }
     }
+    private int isCalendarFirst = 0;
+    @FXML
+    private void showCalendar() throws IOException{//Calendar Button Clicked
+        if(isCalendarFirst==0) {
+            setSideBtnInit();
+            sideBtnCalendar.setStyle("-fx-background-color: #00336a");
+            loadScene("Calendar");
+            setButtonStateInit();
+            isCalendarFirst++;
+            return;
+        }else{
+                mainScene.getChildren().clear();
+                isCalendarFirst--;
+            }
+
+    }
+
+    private int isTeamFirst = 0;
     @FXML
     private void showTeam()throws IOException{//Team Button Clicked
-        setSideBtnInit();
-        sideBtnTeam.setStyle("-fx-background-color: #00336a");
-        loadScene("Team");
+        if(isTeamFirst==0) {
+            setSideBtnInit();
+            sideBtnTeam.setStyle("-fx-background-color: #00336a");
+            loadScene("Team");
+            setButtonStateInit();
+            isTeamFirst++;
+            return;
+        }
+        else{
+            mainScene.getChildren().clear();
+            isTeamFirst--;
+        }
     }
     private void loadScene(String UI) throws IOException {//Main Stage Main Scene Loading Function
         Parent prt;

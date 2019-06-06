@@ -62,4 +62,8 @@ public class NewTaskController implements Initializable {
         this.stage.close();
         this.stage=null;
     }
+    public void exitButtonClicked(){
+        stage.close();
+    }
+
 }
