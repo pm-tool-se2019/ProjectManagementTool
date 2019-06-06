@@ -23,19 +23,26 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 import java.util.List;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import main.java.Calendar.*;
+
 public class CalendarController implements Initializable {
+    //Singleton pattern 자바 ㅣㅅㅇ글톤
+    private static MyCalendar calendar = MyCalendar.getSingleCalendar();
+
     private ObservableList yearList= FXCollections.observableArrayList();
     private ObservableList monthList= FXCollections.observableArrayList();
-    @FXML
+    @FXML//button left, right    @FXML
     private ChoiceBox<Integer> calendarYearChoice, calendarMonthChoice;
-    @FXML//button left, right
+
     private Button calendarLeftButton, calendarRightButton;
     @FXML//buttons of Main Calendar
     private Button calendarButton0_0, calendarButton0_1, calendarButton0_2, calendarButton0_3, calendarButton0_4, calendarButton0_5, calendarButton0_6, calendarButton1_0, calendarButton1_1, calendarButton1_2, calendarButton1_3, calendarButton1_4, calendarButton1_5, calendarButton1_6, calendarButton2_0, calendarButton2_1, calendarButton2_2, calendarButton2_3, calendarButton2_4, calendarButton2_5, calendarButton2_6, calendarButton3_0, calendarButton3_1, calendarButton3_2, calendarButton3_3, calendarButton3_4, calendarButton3_5, calendarButton3_6, calendarButton4_0, calendarButton4_1, calendarButton4_2, calendarButton4_3, calendarButton4_4, calendarButton4_5, calendarButton4_6, calendarButton5_0, calendarButton5_1, calendarButton5_2, calendarButton5_3, calendarButton5_4, calendarButton5_5, calendarButton5_6;
+
     @FXML
     private Text btnText0_0,btnText0_1,btnText0_2,btnText0_3,btnText0_4,btnText0_5,btnText0_6,btnText1_0,btnText1_1,btnText1_2, btnText1_3,btnText1_4,btnText1_5,btnText1_6,btnText2_0,btnText2_1, btnText2_2, btnText2_3, btnText2_4, btnText2_5, btnText2_6, btnText3_0, btnText3_1, btnText3_2, btnText3_3, btnText3_4, btnText3_5, btnText3_6, btnText4_0, btnText4_1, btnText4_2, btnText4_3, btnText4_4, btnText4_5, btnText4_6, btnText5_0, btnText5_1, btnText5_2, btnText5_3, btnText5_4, btnText5_5, btnText5_6;
     @FXML

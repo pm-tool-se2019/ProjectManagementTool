@@ -1,4 +1,4 @@
-package DataClass;
+package main.java.DataClass;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ public class Team_Member {
     private String name;
     private String phone;
     private String email;
-    private ArrayList<Task> assigned_task;
+    private ArrayList<Task> assigned_task = new ArrayList<>();
 
     public int getId() {
         return id;

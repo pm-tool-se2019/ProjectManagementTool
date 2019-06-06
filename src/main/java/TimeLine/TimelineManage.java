@@ -1,9 +1,9 @@
-package TimeLine;
+package main.java.TimeLine;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import DataClass.Task;
+import main.java.DataClass.Task;
 
 
 

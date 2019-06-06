@@ -1,4 +1,4 @@
-package ScheduleMan.firebase4j.firebasesrc.service;
+package main.java.ScheduleMan.firebase4j.firebasesrc.service;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -13,10 +13,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import ScheduleMan.firebase4j.firebasesrc.error.FirebaseException;
-import ScheduleMan.firebase4j.firebasesrc.error.JacksonUtilityException;
-import ScheduleMan.firebase4j.firebasesrc.model.FirebaseResponse;
-import ScheduleMan.firebase4j.firebasesrc.util.JacksonUtility;
+import main.java.ScheduleMan.firebase4j.firebasesrc.error.FirebaseException;
+import main.java.ScheduleMan.firebase4j.firebasesrc.error.JacksonUtilityException;
+import main.java.ScheduleMan.firebase4j.firebasesrc.model.FirebaseResponse;
+import main.java.ScheduleMan.firebase4j.firebasesrc.util.JacksonUtility;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
