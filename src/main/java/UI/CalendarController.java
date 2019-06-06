@@ -57,18 +57,18 @@ public class CalendarController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {//initialize
         calendar = MyCalendar.getSingleCalendar();
-        loadMonthChoice(calendar.);
-        loadYearChoice();
+        loadMonthChoice(calendar.getNowMonthValue());
+        loadYearChoice(calendar.getNowYear());
         setCalendarButtonListener();
         setCalendarDate();
     }
-    private void loadYearChoice(){//initialize method
+    private void loadYearChoice(int initializeYear){//initialize method
         yearList.removeAll(yearList);
         for(int i=1901;i<=2050; i++){
             yearList.add(i);
         }
         calendarYearChoice.getItems().addAll(yearList);
-        calendarYearChoice.setValue(2019);
+        calendarYearChoice.setValue(initializeYear);
         calendarYearChoice.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
