@@ -162,7 +162,7 @@
                               </HBox>
                               <VBox prefHeight="240.0" prefWidth="300.0">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="300.0" text="Button" />
+                                    <Button fx:id="testButton" mnemonicParsing="false" onAction="#testButtonClicked" prefHeight="80.0" prefWidth="300.0" text="Button" />
                                     <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="300.0" text="Button" />
                                     <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="300.0" text="Button" />
                                  </children>
