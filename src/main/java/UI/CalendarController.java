@@ -314,7 +314,13 @@ public class CalendarController implements Initializable {
     }
 
     private void initCalButtonText(){
-        for(int r=0;r<ROW_OF_CALENDAR;r++) for(int c=0;c<COL_OF_CALENDAR;c++) calButtonText[r][c].setText("");
+
+        for(int r=0;r<ROW_OF_CALENDAR;r++){
+            for(int c=0;c<COL_OF_CALENDAR;c++){
+                calButtonText[r][c].setText("");
+                calButton[r][c].setDisable(true);
+            }
+        }
     }
 
     @FXML
@@ -364,6 +370,7 @@ public class CalendarController implements Initializable {
         //Sunday = 0, Monday = 1, ... , Saturday = 6
         for(int i = 0;i < last_day_of_month;i++){
             int idx = i+firstday_of_week;
+            calButton[idx/COL_OF_CALENDAR][idx%COL_OF_CALENDAR].setDisable(false);
             calButtonText[idx/COL_OF_CALENDAR][idx%COL_OF_CALENDAR].setText((i+1)+"");
         }
 
