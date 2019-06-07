@@ -9,11 +9,11 @@ import java.time.LocalTime;
 
 import main.java.DataClass.Task;
 
-class CalendarDataManager{
-    final private int calLastDateOfMonth[]={31,28,31,30,31,30,31,31,30,31,30,31};
-}
-
 public class MyCalendar {
+
+    final private int calLastDateOfMonth[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+    final private int calLeafLastDateOfMonth[]={0,31,29,31,30,31,30,31,31,30,31,30,31};
+
     static final int CAL_WIDTH = 7;
     static final int CAL_HEIGHT = 6;
 
@@ -60,6 +60,20 @@ public class MyCalendar {
         this.now_date = local_date_time.getDayOfWeek();
     }
 
+    public void addTaskToCalendar(){
+        //TODO
+    }
+
+    public int getNowMonthValue(){  return now_month;  }
+    public int getNowYear(){  return now_year;  }
+    public int getNowDayOfMonth(){return now_day;}
+    public int[] getCalLastDateOfMonth(){
+        return calLastDateOfMonth;
+    }
+    public int[] getCalLeafLastDateOfMonth(){
+        return calLeafLastDateOfMonth;
+    }
+
     static public MyCalendar getSingleCalendar(){
         if(singleCalendar == null){
             singleCalendar = new MyCalendar();
@@ -73,5 +87,9 @@ public class MyCalendar {
             singleCalendar = new MyCalendar(task_list);
         }
         return singleCalendar;
+    }
+
+    public void loadTaskList(ArrayList<Task> task_list){
+        this.task_list = task_list;
     }
 }

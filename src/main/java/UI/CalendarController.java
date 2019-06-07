@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.time.*;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -31,11 +32,23 @@ import java.util.ResourceBundle;
 import main.java.Calendar.*;
 
 public class CalendarController implements Initializable {
-    //Singleton pattern 자바 ㅣㅅㅇ글톤
-    private static MyCalendar calendar = MyCalendar.getSingleCalendar();
+
+    /* Constant List */
+    //Calendar Value Constant
+    final private int YEAR_MIN = 1901;
+    final private int YEAR_MAX = 2050;
+    final private int MONTH_MIN = 1;
+    final private int MONTH_MAX = 12;
+
+    final private int ROW_OF_CALENDAR = 6;
+    final private int COL_OF_CALENDAR = 7;
+
+    //Singleton pattern
+    private static MyCalendar calendar;
 
     private ObservableList yearList= FXCollections.observableArrayList();
     private ObservableList monthList= FXCollections.observableArrayList();
+
     @FXML//button left, right    @FXML
     private ChoiceBox<Integer> calendarYearChoice, calendarMonthChoice;
 
@@ -49,24 +62,28 @@ public class CalendarController implements Initializable {
     private HBox btnBg0_0,btnBg0_1,btnBg0_2,btnBg0_3, btnBg0_4, btnBg0_5, btnBg0_6,btnBg1_0, btnBg1_1, btnBg1_2, btnBg1_3, btnBg1_4, btnBg1_5, btnBg1_6, btnBg2_0, btnBg2_1, btnBg2_2, btnBg2_3, btnBg2_4, btnBg2_5, btnBg2_6, btnBg3_0, btnBg3_1, btnBg3_2, btnBg3_3, btnBg3_4, btnBg3_5, btnBg3_6, btnBg4_0, btnBg4_1, btnBg4_2, btnBg4_3, btnBg4_4, btnBg4_5, btnBg4_6, btnBg5_0, btnBg5_1, btnBg5_2, btnBg5_3, btnBg5_4, btnBg5_5, btnBg5_6;
 
     private GridPane calendarGridPane;
-    private Button[][] calButton = new Button[6][7];
-    private HBox[][] calButtonBg = new HBox[6][7];
-    private Text[][] calButtonText = new Text[6][7];
+    private Button[][] calButton = new Button[ROW_OF_CALENDAR][COL_OF_CALENDAR];
+    private HBox[][] calButtonBg = new HBox[ROW_OF_CALENDAR][COL_OF_CALENDAR];
+    private Text[][] calButtonText = new Text[ROW_OF_CALENDAR][COL_OF_CALENDAR];
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {//initialize
-        loadMonthChoice();
-        loadYearChoice();
+        calendar = MyCalendar.getSingleCalendar();
+        loadMonthChoice(calendar.getNowMonthValue());
+        loadYearChoice(calendar.getNowYear());
         setCalendarButtonListener();
         setCalendarDate();
+
+        initCalButtonText();
+        loadCalendarButtonDays();
     }
-    private void loadYearChoice(){//initialize method
+    private void loadYearChoice(int initializeYear){//initialize method
         yearList.removeAll(yearList);
-        for(int i=1901;i<=2050; i++){
+        for(int i=YEAR_MIN; i <= YEAR_MAX; i++){
             yearList.add(i);
         }
         calendarYearChoice.getItems().addAll(yearList);
-        calendarYearChoice.setValue(2019);
+        calendarYearChoice.setValue(initializeYear);
         calendarYearChoice.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -74,11 +91,11 @@ public class CalendarController implements Initializable {
             }
         });
     }
-    private void loadMonthChoice(){//initialize method
+    private void loadMonthChoice(int initializeMonth){//initialize method
         monthList.removeAll(monthList);
         monthList.addAll(1,2,3,4,5,6,7,8,9,10,11,12);
         calendarMonthChoice.getItems().addAll(monthList);
-        calendarMonthChoice.setValue(6);
+        calendarMonthChoice.setValue(initializeMonth);
         calendarMonthChoice.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -87,7 +104,7 @@ public class CalendarController implements Initializable {
         });
     }
     private void getYearValue(Number val){//test Method
-        int i=(int)val+1901;
+        int i=(int)val+YEAR_MIN;
         System.out.println(i);
     }
 
@@ -108,8 +125,8 @@ public class CalendarController implements Initializable {
         setCalendarButtonArray();
         setCalendaraButtonTextArray();
         setCalendarButtonBackgroundArray();
-        for(int i=0;i<5;i++) {
-            for(int j=0;j<6;j++) {
+        for(int i=0;i<ROW_OF_CALENDAR;i++) {
+            for(int j=0;j<COL_OF_CALENDAR;j++) {
                 calButton[i][j].setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -123,6 +140,7 @@ public class CalendarController implements Initializable {
             }
         }
     }
+
     private void setCalendarButtonArray(){
         calButton[0][0] = calendarButton0_0;
         calButton[0][1] = calendarButton0_1;
@@ -276,18 +294,83 @@ public class CalendarController implements Initializable {
         dateInfo.showAndWait();//disable Main stage, Only One Popup available. because of static field stage
 
     }
-    private Button getGridButton(int row, int cal){
-        return calButton[row][cal];
+    private Button getGridButton(int row, int col) {
+        return calButton[row][col];
     }
+
+    private void setCalendarYearAndMonth(int year, int month){
+        if(year<YEAR_MIN || year >YEAR_MAX || month < MONTH_MIN || month > MONTH_MAX){
+            System.err.println("Date is out of format." + "YEAR : " + year + ", " + "MONTH : " + month);
+            return ;
+        }
+
+        calendarYearChoice.setValue(year);
+        calendarMonthChoice.setValue(month);
+        return;
+    }
+
+    private LocalDate getCurrentCalendarUILocalDate(){
+        return LocalDate.of(calendarYearChoice.getValue(),calendarMonthChoice.getValue(),1);
+    }
+
+    private void initCalButtonText(){
+        for(int r=0;r<ROW_OF_CALENDAR;r++) for(int c=0;c<COL_OF_CALENDAR;c++) calButtonText[r][c].setText("");
+    }
+
     @FXML
     private void calendarLeftButtonClicked(){
+        int now_year, now_month;
+        LocalDate currentDate = getCurrentCalendarUILocalDate();
+        currentDate = currentDate.minusMonths((long)1);
 
+        now_year = currentDate.getYear();
+        now_month = currentDate.getMonthValue();
+
+        setCalendarYearAndMonth(now_year,now_month);
+
+        initCalButtonText();
+        loadCalendarButtonDays();
     }
+
     @FXML
     private void calendarRightButtonClicked(){
+        int now_year, now_month;
+        LocalDate currentDate = getCurrentCalendarUILocalDate();
+        currentDate = currentDate.plusMonths((long)1);
+
+        now_year = currentDate.getYear();
+        now_month = currentDate.getMonthValue();
+
+        setCalendarYearAndMonth(now_year,now_month);
+
+        initCalButtonText();
+        loadCalendarButtonDays();
+    }
+
+    private void loadCalendarButtonDays(){
+        LocalDate current_date = getCurrentCalendarUILocalDate();
+        //Initialize
+        for(int r=0;r<ROW_OF_CALENDAR;r++) for(int c=0;c<COL_OF_CALENDAR;c++) calButtonText[r][c].setText("");
+
+        int firstday_of_week = current_date.getDayOfWeek().getValue() % COL_OF_CALENDAR;
+        int last_day_of_month;
+        if(current_date.isLeapYear()) {
+            last_day_of_month = calendar.getCalLastDateOfMonth()[current_date.getMonthValue()];
+        } else {
+            last_day_of_month = calendar.getCalLeafLastDateOfMonth()[current_date.getMonthValue()];
+        }
+
+        System.out.println("Month 1st : " + firstday_of_week);
+        //Sunday = 0, Monday = 1, ... , Saturday = 6
+        for(int i = 0;i < last_day_of_month;i++){
+            int idx = i+firstday_of_week;
+            calButtonText[idx/COL_OF_CALENDAR][idx%COL_OF_CALENDAR].setText((i+1)+"");
+        }
+
 
     }
-    private void getCalenarButtonNumber(){
+
+    private void getCalendarButtonNumber(){
 
     }
 }
