@@ -122,8 +122,8 @@ public class CalendarController implements Initializable {
         setCalendarButtonArray();
         setCalendaraButtonTextArray();
         setCalendarButtonBackgroundArray();
-        for(int i=0;i<5;i++) {
-            for(int j=0;j<6;j++) {
+        for(int i=0;i<ROW_OF_CALENDAR;i++) {
+            for(int j=0;j<COL_OF_CALENDAR;j++) {
                 calButton[i][j].setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -295,7 +295,7 @@ public class CalendarController implements Initializable {
         return calButton[row][col];
     }
 
-    private void _setCalendarYearAndMonth(int year, int month){
+    private void setCalendarYearAndMonth(int year, int month){
         if(year<YEAR_MIN || year >YEAR_MAX || month < MONTH_MIN || month > MONTH_MAX){
             System.err.println("Date is out of format." + "YEAR : " + year + ", " + "MONTH : " + month);
             return ;
@@ -306,39 +306,39 @@ public class CalendarController implements Initializable {
         return;
     }
 
+    private LocalDate getCurrentCalendarUILocalDate(){
+        return LocalDate.of(calendarYearChoice.getValue(),calendarMonthChoice.getValue(),1);
+    }
+
     @FXML
     private void calendarLeftButtonClicked(){
-        int now_year, now_month,now_day=1;
-        LocalDate currentDate;
-        now_year = calendarYearChoice.getValue();
-        now_month = calendarMonthChoice.getValue();
-
-        currentDate = LocalDate.of(now_year,now_month,now_day);
+        int now_year, now_month;
+        LocalDate currentDate = getCurrentCalendarUILocalDate();
         currentDate = currentDate.minusMonths((long)1);
 
         now_year = currentDate.getYear();
         now_month = currentDate.getMonthValue();
 
-        _setCalendarYearAndMonth(now_year,now_month);
+        setCalendarYearAndMonth(now_year,now_month);
     }
 
     @FXML
     private void calendarRightButtonClicked(){
-        int now_year, now_month,now_day=1;
-        LocalDate currentDate;
-        now_year = calendarYearChoice.getValue();
-        now_month = calendarMonthChoice.getValue();
-
-        currentDate = LocalDate.of(now_year,now_month,now_day);
+        int now_year, now_month;
+        LocalDate currentDate = getCurrentCalendarUILocalDate();
         currentDate = currentDate.plusMonths((long)1);
 
         now_year = currentDate.getYear();
         now_month = currentDate.getMonthValue();
 
-        calendarYearChoice.setValue(now_year);
-        calendarMonthChoice.setValue(now_month);
+        setCalendarYearAndMonth(now_year,now_month);
     }
-    private void getCalenarButtonNumber(){
+
+    private void loadCalendarButtonDays(){
+        //TODO
+    }
+
+    private void getCalendarButtonNumber(){
 
     }
 }
