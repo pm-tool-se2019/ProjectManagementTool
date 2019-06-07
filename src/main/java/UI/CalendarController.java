@@ -73,6 +73,9 @@ public class CalendarController implements Initializable {
         loadYearChoice(calendar.getNowYear());
         setCalendarButtonListener();
         setCalendarDate();
+
+        initCalButtonText();
+        loadCalendarButtonDays();
     }
     private void loadYearChoice(int initializeYear){//initialize method
         yearList.removeAll(yearList);
@@ -310,6 +313,10 @@ public class CalendarController implements Initializable {
         return LocalDate.of(calendarYearChoice.getValue(),calendarMonthChoice.getValue(),1);
     }
 
+    private void initCalButtonText(){
+        for(int r=0;r<ROW_OF_CALENDAR;r++) for(int c=0;c<COL_OF_CALENDAR;c++) calButtonText[r][c].setText("");
+    }
+
     @FXML
     private void calendarLeftButtonClicked(){
         int now_year, now_month;
@@ -320,6 +327,9 @@ public class CalendarController implements Initializable {
         now_month = currentDate.getMonthValue();
 
         setCalendarYearAndMonth(now_year,now_month);
+
+        initCalButtonText();
+        loadCalendarButtonDays();
     }
 
     @FXML
@@ -332,10 +342,32 @@ public class CalendarController implements Initializable {
         now_month = currentDate.getMonthValue();
 
         setCalendarYearAndMonth(now_year,now_month);
+
+        initCalButtonText();
+        loadCalendarButtonDays();
     }
 
     private void loadCalendarButtonDays(){
-        //TODO
+        LocalDate current_date = getCurrentCalendarUILocalDate();
+        //Initialize
+        for(int r=0;r<ROW_OF_CALENDAR;r++) for(int c=0;c<COL_OF_CALENDAR;c++) calButtonText[r][c].setText("");
+
+        int firstday_of_week = current_date.getDayOfWeek().getValue() % COL_OF_CALENDAR;
+        int last_day_of_month;
+        if(current_date.isLeapYear()) {
+            last_day_of_month = calendar.getCalLastDateOfMonth()[current_date.getMonthValue()];
+        } else {
+            last_day_of_month = calendar.getCalLeafLastDateOfMonth()[current_date.getMonthValue()];
+        }
+
+        System.out.println("Month 1st : " + firstday_of_week);
+        //Sunday = 0, Monday = 1, ... , Saturday = 6
+        for(int i = 0;i < last_day_of_month;i++){
+            int idx = i+firstday_of_week;
+            calButtonText[idx/COL_OF_CALENDAR][idx%COL_OF_CALENDAR].setText((i+1)+"");
+        }
+
+
     }
 
     private void getCalendarButtonNumber(){
