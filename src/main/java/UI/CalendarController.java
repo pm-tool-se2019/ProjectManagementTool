@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.time.*;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -284,7 +285,19 @@ public class CalendarController implements Initializable {
     }
     @FXML
     private void calendarLeftButtonClicked(){
+        int now_year, now_month,now_day=1;
+        LocalDate currentDate;
+        now_year = calendarYearChoice.getValue();
+        now_month = calendarMonthChoice.getValue();
+        
+        currentDate = LocalDate.of(now_year,now_month,now_day);
+        currentDate = currentDate.minusMonths((long)1);
 
+        now_year = currentDate.getYear();
+        now_month = currentDate.getMonthValue();
+
+        calendarYearChoice.setValue(now_year);
+        calendarMonthChoice.setValue(now_month);
     }
     @FXML
     private void calendarRightButtonClicked(){
