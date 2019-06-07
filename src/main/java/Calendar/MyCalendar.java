@@ -88,4 +88,8 @@ public class MyCalendar {
         }
         return singleCalendar;
     }
+
+    public void loadTaskList(ArrayList<Task> task_list){
+        this.task_list = task_list;
+    }
 }
