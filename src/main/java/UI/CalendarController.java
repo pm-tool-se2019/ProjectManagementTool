@@ -32,6 +32,17 @@ import java.util.ResourceBundle;
 import main.java.Calendar.*;
 
 public class CalendarController implements Initializable {
+
+    /* Constant List */
+    //Calendar Value Constant
+    final private int YEAR_MIN = 1901;
+    final private int YEAR_MAX = 2050;
+    final private int MONTH_MIN = 1;
+    final private int MONTH_MAX = 12;
+
+    final private int ROW_OF_CALENDAR = 6;
+    final private int COL_OF_CALENDAR = 7;
+
     //Singleton pattern
     private static MyCalendar calendar;
 
@@ -51,9 +62,9 @@ public class CalendarController implements Initializable {
     private HBox btnBg0_0,btnBg0_1,btnBg0_2,btnBg0_3, btnBg0_4, btnBg0_5, btnBg0_6,btnBg1_0, btnBg1_1, btnBg1_2, btnBg1_3, btnBg1_4, btnBg1_5, btnBg1_6, btnBg2_0, btnBg2_1, btnBg2_2, btnBg2_3, btnBg2_4, btnBg2_5, btnBg2_6, btnBg3_0, btnBg3_1, btnBg3_2, btnBg3_3, btnBg3_4, btnBg3_5, btnBg3_6, btnBg4_0, btnBg4_1, btnBg4_2, btnBg4_3, btnBg4_4, btnBg4_5, btnBg4_6, btnBg5_0, btnBg5_1, btnBg5_2, btnBg5_3, btnBg5_4, btnBg5_5, btnBg5_6;
 
     private GridPane calendarGridPane;
-    private Button[][] calButton = new Button[6][7];
-    private HBox[][] calButtonBg = new HBox[6][7];
-    private Text[][] calButtonText = new Text[6][7];
+    private Button[][] calButton = new Button[ROW_OF_CALENDAR][COL_OF_CALENDAR];
+    private HBox[][] calButtonBg = new HBox[ROW_OF_CALENDAR][COL_OF_CALENDAR];
+    private Text[][] calButtonText = new Text[ROW_OF_CALENDAR][COL_OF_CALENDAR];
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {//initialize
@@ -65,7 +76,7 @@ public class CalendarController implements Initializable {
     }
     private void loadYearChoice(int initializeYear){//initialize method
         yearList.removeAll(yearList);
-        for(int i=1901;i<=2050; i++){
+        for(int i=YEAR_MIN; i <= YEAR_MAX; i++){
             yearList.add(i);
         }
         calendarYearChoice.getItems().addAll(yearList);
@@ -90,7 +101,7 @@ public class CalendarController implements Initializable {
         });
     }
     private void getYearValue(Number val){//test Method
-        int i=(int)val+1901;
+        int i=(int)val+YEAR_MIN;
         System.out.println(i);
     }
 
@@ -280,28 +291,52 @@ public class CalendarController implements Initializable {
         dateInfo.showAndWait();//disable Main stage, Only One Popup available. because of static field stage
 
     }
-    private Button getGridButton(int row, int cal){
-        return calButton[row][cal];
+    private Button getGridButton(int row, int col) {
+        return calButton[row][col];
     }
+
+    private void _setCalendarYearAndMonth(int year, int month){
+        if(year<YEAR_MIN || year >YEAR_MAX || month < MONTH_MIN || month > MONTH_MAX){
+            System.err.println("Date is out of format." + "YEAR : " + year + ", " + "MONTH : " + month);
+            return ;
+        }
+
+        calendarYearChoice.setValue(year);
+        calendarMonthChoice.setValue(month);
+        return;
+    }
+
     @FXML
     private void calendarLeftButtonClicked(){
         int now_year, now_month,now_day=1;
         LocalDate currentDate;
         now_year = calendarYearChoice.getValue();
         now_month = calendarMonthChoice.getValue();
-        
+
         currentDate = LocalDate.of(now_year,now_month,now_day);
         currentDate = currentDate.minusMonths((long)1);
 
         now_year = currentDate.getYear();
         now_month = currentDate.getMonthValue();
 
-        calendarYearChoice.setValue(now_year);
-        calendarMonthChoice.setValue(now_month);
+        _setCalendarYearAndMonth(now_year,now_month);
     }
+
     @FXML
     private void calendarRightButtonClicked(){
+        int now_year, now_month,now_day=1;
+        LocalDate currentDate;
+        now_year = calendarYearChoice.getValue();
+        now_month = calendarMonthChoice.getValue();
 
+        currentDate = LocalDate.of(now_year,now_month,now_day);
+        currentDate = currentDate.plusMonths((long)1);
+
+        now_year = currentDate.getYear();
+        now_month = currentDate.getMonthValue();
+
+        calendarYearChoice.setValue(now_year);
+        calendarMonthChoice.setValue(now_month);
     }
     private void getCalenarButtonNumber(){
 
