@@ -1,11 +1,11 @@
-package TaskLists;
+package main.java.TaskLists;
 
 
-import java.util.ArrayList;
-import DataClass.Task;
-import DataClass.Team_Member;
-import java.time.LocalDateTime;
-import java.time.Month;
+import main.java.util.ArrayList;
+import main.java.DataClass.Task;
+import main.java.DataClass.Team_Member;
+import main.java.java.time.LocalDateTime;
+import main.java.time.Month;
 public class TaskListFuncs {
     static public void TaskListFuncs() {
 
