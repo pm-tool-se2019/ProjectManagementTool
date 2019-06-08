@@ -1,15 +1,12 @@
 package main.java.TaskLists;
 
 
-import main.java.util.ArrayList;
+import java.util.ArrayList;
 import main.java.DataClass.Task;
 import main.java.DataClass.Team_Member;
-import main.java.java.time.LocalDateTime;
-import main.java.time.Month;
+import java.time.LocalDateTime;
+import java.time.Month;
 public class TaskListFuncs {
-    static public void TaskListFuncs() {
-
-    }
 
     public static void main(String args[]) { //Main func for testing
         ArrayList memberList = new ArrayList<Team_Member>();
@@ -90,6 +87,7 @@ public class TaskListFuncs {
 
         }//The method for showing 'Done' list. The GUI plan is same with the method 'showTodoList'
     }
+    
     static public void alarmTodayTask(int member_id, ArrayList memberList) {
         int member_index = 0;
         for (; member_index < memberList.size(); member_index++) {//The first, checking each member in the order.
