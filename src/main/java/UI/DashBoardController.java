@@ -5,15 +5,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DashBoardController implements Initializable {
+
+
+    @FXML
+    VBox personalRecentTask, prjRecentTask;
+    @FXML
+    ScrollPane timeline;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

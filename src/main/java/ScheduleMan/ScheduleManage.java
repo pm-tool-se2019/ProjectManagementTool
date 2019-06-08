@@ -1,7 +1,16 @@
 package ScheduleMan;
 
+<<<<<<< Updated upstream
 import DataClass.Task;
+=======
+import com.google.gson.Gson;
+import main.java.DataClass.Task;
+import main.java.ScheduleMan.firebase4j.firebasesrc.error.FirebaseException;
+import main.java.ScheduleMan.firebase4j.firebasesrc.model.FirebaseResponse;
+import main.java.ScheduleMan.firebase4j.firebasesrc.service.Firebase;
+>>>>>>> Stashed changes
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 public class ScheduleManage{
