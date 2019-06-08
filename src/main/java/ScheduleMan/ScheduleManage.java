@@ -41,6 +41,10 @@ public class ScheduleManage{
          @param : Task is you want to add. It should pre-defined from other interface.
          This method does not give a function of setting property of task object.
         */
+
+        if(current_user_task_list == null){
+            current_user_task_list = new ArrayList<Task>();
+        }
         current_user_task_list.add(t);
         Firebase firebase = new Firebase(firebase_baseUrl);
         Gson gson = new Gson();
@@ -48,10 +52,10 @@ public class ScheduleManage{
         firebase.put("/Task/" + t.getId(),jsonified_task);
     }
 
-    static public void deleteTask(int id) throws FirebaseException, UnsupportedEncodingException {
+    static public void deleteTask(Task t) throws FirebaseException, UnsupportedEncodingException {
         /* Delete the Task from current_user_task_list and Firebase DB.
         * But, the object will not be deleted by GC? */
-        Task target = searchFromTaskList(id);
+        Task target = searchFromTaskList(t.getId());
         if(!current_user_task_list.contains(target)){
             System.out.println("해당 Task가 존재하지 않습니다.");
             return;
@@ -63,25 +67,25 @@ public class ScheduleManage{
         }
     }
 
-    static public void updateTask(int id) throws UnsupportedEncodingException, FirebaseException {
+    static public void updateTask(Task t) throws UnsupportedEncodingException, FirebaseException {
         // Updating the Task information.
-        Task target = searchFromTaskList(id);
+        Task target = searchFromTaskList(t.getId());
         if(target == null){
-            target = fetchFromDB(id);
+            target = fetchFromDB(t);
             current_user_task_list.add(target);
         }
     // Update function by GUI here.
 
     }
 
-    static private Task fetchFromDB(int id) throws FirebaseException, UnsupportedEncodingException {
+    static private Task fetchFromDB(Task t) throws FirebaseException, UnsupportedEncodingException {
         /*
          Fetch specific Task from DB using task id.
          Use when cannot find task from current_user_task_list.
          Return Task or null(failed to find).
         */
         Firebase firebase = new Firebase(firebase_baseUrl);
-        FirebaseResponse response = firebase.get("/Task/"+(id));
+        FirebaseResponse response = firebase.get("/Task/"+(t.getId()));
         Gson gson = new Gson();
         String task_json = response.getRawBody();
         System.out.println(task_json);
@@ -93,7 +97,7 @@ public class ScheduleManage{
         return receivedtask;
     }
     
-    static public void getAllTask() throws FirebaseException, UnsupportedEncodingException {
+    static public void fetchAllFromDB() throws FirebaseException, UnsupportedEncodingException {
         /*
          Get all Tasks from firebase DB. It should be used when the program start. 
          All tasks are saved at current_user_task_list.
