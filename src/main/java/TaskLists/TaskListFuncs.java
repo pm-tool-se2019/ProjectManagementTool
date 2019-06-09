@@ -28,6 +28,7 @@ public class TaskListFuncs {
 
 
     static public void showTodoList(ArrayList TaskList) {//The method for showing 'Todo' list, after checking out with console window, GUI is gonna be implemented
+        if (TaskList == null) TaskList = new ArrayList<Task>();
         for (int i = 0; i < TaskList.size(); i++) {
             Task temp = (Task) (TaskList.get(i));
             if (temp.getState() == "DONE") {
@@ -38,6 +39,7 @@ public class TaskListFuncs {
     }
 
     static public void showDoingList(ArrayList TaskList) {
+        if (TaskList == null) TaskList = new ArrayList<Task>();
         for (int i = 0; i < TaskList.size(); i++) {
             Task temp = (Task) (TaskList.get(i));
             if (temp.getState() == "DOING") {
@@ -48,6 +50,7 @@ public class TaskListFuncs {
     }
 
     static public void showDoneList(ArrayList TaskList) {
+        if (TaskList == null) TaskList = new ArrayList<Task>();
         for (int i = 0; i < TaskList.size(); i++) {
             Task temp = (Task) (TaskList.get(i));
             if (temp.getState() == "DONE") {
@@ -59,6 +62,7 @@ public class TaskListFuncs {
 
 
     static public void alarmTodayTask(ArrayList TaskList) {
+        if (TaskList == null) TaskList = new ArrayList<Task>();
         for (int i = 0; i < TaskList.size(); i++) {
             Task temp = (Task) (TaskList.get(i));
             LocalDateTime today = LocalDateTime.now();
