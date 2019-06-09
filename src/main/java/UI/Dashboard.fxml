@@ -117,7 +117,7 @@
                                     <Insets left="5.0" right="5.0" />
                                  </VBox.margin>
                               </HBox>
-                              <VBox alignment="CENTER" prefHeight="240.0" prefWidth="300.0">
+                              <VBox fx:id="personalRecentTask" alignment="CENTER" prefHeight="240.0" prefWidth="300.0">
                                  <children>
                                     <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="300.0" text="Button" />
                                     <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="300.0" text="Button" />
@@ -160,7 +160,7 @@
                                     <Insets left="5.0" right="5.0" />
                                  </VBox.margin>
                               </HBox>
-                              <VBox prefHeight="240.0" prefWidth="300.0">
+                              <VBox fx:id="prjRecentTask" prefHeight="240.0" prefWidth="300.0">
                                  <children>
                                     <Button fx:id="testButton" mnemonicParsing="false" onAction="#testButtonClicked" prefHeight="80.0" prefWidth="300.0" text="Button" />
                                     <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="300.0" text="Button" />
@@ -174,7 +174,7 @@
                         </VBox>
                      </children>
                   </VBox>
-                  <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="490.0" prefWidth="300.0">
+                  <ScrollPane fx:id="timeline" hbarPolicy="NEVER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="490.0" prefWidth="300.0">
                      <content>
                         <Pane maxHeight="1.7976931348623157E308" prefWidth="200.0">
                            <children>
