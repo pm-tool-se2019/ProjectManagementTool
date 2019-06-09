@@ -1,4 +1,4 @@
-# Project Management Tool
+# Project Management Tool [![Build Status](https://travis-ci.org/pm-tool-se2019/Source.svg?branch=master)](https://travis-ci.org/pm-tool-se2019/Source)
 ## Project Description
  * This tools is used to managing/scheduling some tiny team project effectively.
 

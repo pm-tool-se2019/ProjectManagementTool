@@ -1,5 +1,5 @@
-package Calendar;
-import DataClass.Task;
+package main.java.Calendar;
+import main.java.DataClass.Task;
 
 import java.util.ArrayList;
 
