@@ -294,6 +294,9 @@ public class CalendarController implements Initializable {
         String _month = String.valueOf(lastModified.getMonth());
         String _day = String.valueOf(lastModified.getDay());
 
+        Button tmpButton = (Button) event.getSource();
+
+        System.out.print(tmpButton.getText());
         ((CalendarDateController) fxmlLoader.getController()).setDate(_year,_month,_day);
         dateInfo.setScene(sceneAdd);
         if(isStageFirst==0) {//state check
