@@ -46,7 +46,7 @@ public class ScheduleManage{
         * But, the object will not be deleted by GC? */
         Task target = searchFromTaskList(id);
         if(!current_user_task_list.contains(target)){
-            //System.out.println("�ش� Task�� �������� �ʽ��ϴ�.");
+            System.out.println("�ش� Task�� �������� �ʽ��ϴ�.");
             return;
         }
         else{

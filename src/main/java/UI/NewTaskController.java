@@ -12,7 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import main.java.DataClass.Task;
+import main.java.ScheduleMan.ScheduleManage;
+import main.java.ScheduleMan.firebase4j.firebasesrc.error.FirebaseException;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -77,7 +81,17 @@ public class NewTaskController implements Initializable {
     }
     @FXML
     private void addButtonClicked(){//add Button Clicked
-
+        //Task(int id, String task_name, String description, int start_year, int start_month, int start_day, int end_year, int end_month, int end_day, String state, int hierarchy)
+        Task tt = new Task((int)Math.random()*1000, getTaskName().toString(),"TEST",2019,06,10,2019,06,11,"TODO",12);
+        try {
+            //ScheduleManage.addTask(ttt);
+            ScheduleManage.addTask(tt);
+        } catch(FirebaseException e){
+            //
+        } catch(UnsupportedEncodingException e){
+            //
+        }
+        stage.close();
     }
     public CharSequence getTaskName(){//you can use .toString() if you want to get String format
         return taskName.getCharacters();

@@ -25,6 +25,7 @@ public class CalendarDateController implements Initializable{
     private ScrollPane list;
     @FXML
     private Text calYear, calMonth, calDate;
+
     private Stage stage;
     public void initialize(URL location, ResourceBundle resources) {
         makeStageDragable();
@@ -75,7 +76,14 @@ public class CalendarDateController implements Initializable{
     public void setDate(String Year, String Month, String Date){//set title Date
         calYear.setText(Year);
         calMonth.setText(Month);
-        calDate.setText(Date);
+        calDate.setText("10");
     }
+
+    private void getDate(){
+
+    }
+
+
+
 
 }
