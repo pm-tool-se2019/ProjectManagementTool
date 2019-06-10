@@ -84,6 +84,7 @@ public class CalendarDateController implements Initializable{
 
     private void setTaskList(){//initialize
         //scrollAnchor.getChildren().add(new taskButton());//testMethod
+        System.out.print(ScheduleManage.current_user_task_list.size());
         for(int i =0;i< ScheduleManage.current_user_task_list.size();i++){
             Task temp = ScheduleManage.current_user_task_list.get(i);
             System.out.println(calDate.getText() + calMonth.getText()+ calYear.getText());

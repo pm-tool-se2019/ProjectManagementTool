@@ -57,7 +57,7 @@ public class ScheduleManage{
         * But, the object will not be deleted by GC? */
         Task target = searchFromTaskList(t.getId());
         if(!current_user_task_list.contains(target)){
-            System.out.println("ÇØ´ç Task°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+            System.out.println("ï¿½Ø´ï¿½ Taskï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.");
             return;
         }
         else{
@@ -101,9 +101,10 @@ public class ScheduleManage{
         /*
          Get all Tasks from firebase DB. It should be used when the program start. 
          All tasks are saved at current_user_task_list.
-         
+
          WARNING : Does not inspect when the database is empty.
         */
+        current_user_task_list = new ArrayList<Task>();
         Firebase firebase = new Firebase(firebase_baseUrl);
         FirebaseResponse response = firebase.get("/Task/");
         Gson gson = new Gson();
