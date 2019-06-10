@@ -10,8 +10,6 @@ import javafx.scene.Parent;
 //application main
 public class Main extends Application {
     //main stage call
-    //private Stage stage = null;
-    //Stage stage;
     private Stage stage =null;
     @Override
     public void start(Stage stage) throws Exception {

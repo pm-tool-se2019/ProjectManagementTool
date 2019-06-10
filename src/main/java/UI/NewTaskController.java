@@ -1,10 +1,14 @@
 package main.java.UI;
 
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -21,6 +25,12 @@ public class NewTaskController implements Initializable {
     private AnchorPane parent;
     @FXML
     private Button addButton, cancelButton;
+    @FXML
+    private TextField taskName;
+    @FXML
+    private TextArea Descriptions;
+    @FXML
+    private DatePicker startDate, endDate;
     private Stage stage;
     //implements components, Controller of Main Scene Initial State
     @Override
@@ -65,5 +75,20 @@ public class NewTaskController implements Initializable {
     public void exitButtonClicked(){
         stage.close();
     }
+    @FXML
+    private void addButtonClicked(){//add Button Clicked
 
+    }
+    public CharSequence getTaskName(){//you can use .toString() if you want to get String format
+        return taskName.getCharacters();
+    }
+    public String getStartDate(){
+        return startDate.getValue().toString();
+    }
+    public String getEndDate(){
+        return endDate.getValue().toString();
+    }
+    public ObservableList<CharSequence> getDescription(){//you can use .toString() if you want to get String format
+        return Descriptions.getParagraphs();
+    }
 }
