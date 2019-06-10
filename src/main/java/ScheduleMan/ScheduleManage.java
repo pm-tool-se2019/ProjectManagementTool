@@ -1,4 +1,4 @@
-ï»¿package main.java.ScheduleMan;
+package main.java.ScheduleMan;
 
 import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
 import main.java.DataClass.Task;
@@ -57,7 +57,7 @@ public class ScheduleManage{
         * But, the object will not be deleted by GC? */
         Task target = searchFromTaskList(t.getId());
         if(!current_user_task_list.contains(target)){
-            System.out.println("í•´ë‹¹ Taskê°€ ì¡´ìž¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+            System.out.println("ÇØ´ç Task°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
             return;
         }
         else{
