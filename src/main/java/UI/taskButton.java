@@ -92,4 +92,8 @@ public class taskButton extends VBox {
         this.endDate.setText(endDate);
         this.desc.setText(description);
     }
+
+    public String getDesc(){
+        return desc.getText();
+    }
 }
