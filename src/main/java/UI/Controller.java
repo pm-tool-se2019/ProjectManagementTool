@@ -35,7 +35,7 @@ public class Controller implements Initializable {
     @FXML
     private Pane mainScene;
     @FXML
-    private Button addNew, exitButton, dashboardButton, calendarButton, teamButton ;
+    private Button addNew, exitButton, dashboardButton, calendarButton, teamButton, demoButton ;
     @FXML
     private HBox sideBtnDashboard, sideBtnTeam, sideBtnCalendar;
     //implements components, Controller of Main Scene Initial State
@@ -195,6 +195,10 @@ public class Controller implements Initializable {
                 node.setStyle("-fx-background-color: #1385ff");
             }
         });
+    }
+    @FXML
+    private void demoButtonClicked(){
+
     }
 
 
