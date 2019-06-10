@@ -57,7 +57,7 @@ public class ScheduleManage{
         * But, the object will not be deleted by GC? */
         Task target = searchFromTaskList(t.getId());
         if(!current_user_task_list.contains(target)){
-            System.out.println("�ش� Task�� �������� �ʽ��ϴ�.");
+            System.out.println("Task does not found.");
             return;
         }
         else{
@@ -67,25 +67,28 @@ public class ScheduleManage{
         }
     }
 
-    static public void updateTask(Task t) throws UnsupportedEncodingException, FirebaseException {
+    static public void updateTask(int oldid, int id, String task_name, String description, int start_year, int start_month, int start_day, int end_year, int end_month, int end_day, String state, int hierarchy) throws UnsupportedEncodingException, FirebaseException {
         // Updating the Task information.
-        Task target = searchFromTaskList(t.getId());
+        Task target = searchFromTaskList(oldid);
         if(target == null){
-            target = fetchFromDB(t);
+            target = fetchFromDB(oldid);
             current_user_task_list.add(target);
         }
-    // Update function by GUI here.
+        deleteTask(target);
 
+        Task newtask = new Task(id, task_name, description, start_year, start_month, start_day, end_year, end_month, end_day ,state, hierarchy);
+        addTask(newtask);
+    // Update function by GUI here.
     }
 
-    static private Task fetchFromDB(Task t) throws FirebaseException, UnsupportedEncodingException {
+    static private Task fetchFromDB(int id) throws FirebaseException, UnsupportedEncodingException {
         /*
          Fetch specific Task from DB using task id.
          Use when cannot find task from current_user_task_list.
          Return Task or null(failed to find).
         */
         Firebase firebase = new Firebase(firebase_baseUrl);
-        FirebaseResponse response = firebase.get("/Task/"+(t.getId()));
+        FirebaseResponse response = firebase.get("/Task/"+(id));
         Gson gson = new Gson();
         String task_json = response.getRawBody();
         System.out.println(task_json);

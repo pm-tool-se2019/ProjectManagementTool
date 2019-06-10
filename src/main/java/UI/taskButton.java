@@ -19,6 +19,7 @@ import javafx.util.Callback;
 import java.io.IOException;
 
 public class taskButton extends VBox {
+    public static String selected_task_name;
     private Node view;
 
     //
@@ -91,6 +92,8 @@ public class taskButton extends VBox {
         this.startDate.setText(startDate);
         this.endDate.setText(endDate);
         this.desc.setText(description);
+
+        selected_task_name = Name;
     }
 
     public String getDesc(){

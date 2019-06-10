@@ -43,6 +43,13 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         makeStageDragable();
+        try {
+            ScheduleManage.fetchAllFromDB();
+        } catch (FirebaseException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         if(isDashboardFirst==0){
         changeBackgroundOnHoverUsingEvents(sideBtnDashboard);
         }else{

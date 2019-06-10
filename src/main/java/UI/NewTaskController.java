@@ -145,7 +145,8 @@ public class NewTaskController implements Initializable {
 
     }
 
-    private int makeId(){
+    // Used in NewTaskController and TaskInfoController.
+    public static int makeId(){
         Random generator = new Random();
         int tempid;
         while(true){
