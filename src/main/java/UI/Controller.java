@@ -18,8 +18,11 @@ import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import main.java.ScheduleMan.ScheduleManage;
 
 public class Controller implements Initializable {
+    //Model
+
 
     private double xOffset = 0;
     private double yOffset = 0;

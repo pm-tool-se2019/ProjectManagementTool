@@ -4,10 +4,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,10 +19,13 @@ public class CalendarDateController implements Initializable{
     private double yOffset = 0;
 
     @FXML
-    private AnchorPane parent;
+    private AnchorPane parent, scrollAnchor;
+    @FXML
+    private ScrollPane list;
     private Stage stage;
     public void initialize(URL location, ResourceBundle resources) {
         makeStageDragable();
+        setTaskList();;
     }
 
     //set stage, this function SHOULD be used in parent Class
@@ -59,6 +64,10 @@ public class CalendarDateController implements Initializable{
     }
     public void exitButtonClicked(){
         stage.close();
+    }
+
+    private void setTaskList(){//initialize
+        scrollAnchor.getChildren().add(new taskButton());//testMethod
     }
 
 }

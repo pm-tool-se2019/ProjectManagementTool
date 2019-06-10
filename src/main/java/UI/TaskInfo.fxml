@@ -117,7 +117,7 @@
                   </VBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="420.0">
                      <children>
-                        <Button fx:id="taskInfoEditBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" styleClass="defaultButton" stylesheets="@ui.css" text="Edit">
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonClicked" prefHeight="30.0" prefWidth="80.0" styleClass="defaultButton" stylesheets="@ui.css" text="Edit">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -125,7 +125,7 @@
                               <Font name="Corbel Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="taskInfoCloseBtn" mnemonicParsing="false" onAction="#cancelButtonClicked" prefHeight="30.0" prefWidth="80.0" styleClass="defaultButton" stylesheets="@ui.css" text="Close">
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClicked" prefHeight="30.0" prefWidth="80.0" styleClass="defaultButton" stylesheets="@ui.css" text="Close">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
