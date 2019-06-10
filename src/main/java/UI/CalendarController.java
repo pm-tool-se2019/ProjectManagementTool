@@ -45,6 +45,7 @@ public class CalendarController implements Initializable {
 
     //Singleton pattern
     private static MyCalendar calendar;
+    private static LastModified lastModified;
 
     private ObservableList yearList= FXCollections.observableArrayList();
     private ObservableList monthList= FXCollections.observableArrayList();
@@ -73,6 +74,7 @@ public class CalendarController implements Initializable {
         loadYearChoice(calendar.getNowYear());
         setCalendarButtonListener();
         setCalendarDate();
+        lastModified = LastModified.getInstance(calendar.getNowYear(),calendar.getNowMonthValue(),calendar.getNowDayOfMonth());
 
         initCalButtonText();
         loadCalendarButtonDays();
@@ -125,6 +127,7 @@ public class CalendarController implements Initializable {
         setCalendarButtonArray();
         setCalendaraButtonTextArray();
         setCalendarButtonBackgroundArray();
+
         for(int i=0;i<ROW_OF_CALENDAR;i++) {
             for(int j=0;j<COL_OF_CALENDAR;j++) {
                 calButton[i][j].setOnAction(new EventHandler<ActionEvent>() {
@@ -285,6 +288,16 @@ public class CalendarController implements Initializable {
         Parent root = (Parent)fxmlLoader.load();
         Scene sceneAdd = new Scene(root);
         ((CalendarDateController) fxmlLoader.getController()).setStage(dateInfo);
+
+
+        String _year = String.valueOf(lastModified.getYear());
+        String _month = String.valueOf(lastModified.getMonth());
+        String _day = String.valueOf(lastModified.getDay());
+
+        Button tmpButton = (Button) event.getSource();
+
+        System.out.print(tmpButton.getText());
+        ((CalendarDateController) fxmlLoader.getController()).setDate(_year,_month,_day);
         dateInfo.setScene(sceneAdd);
         if(isStageFirst==0) {//state check
             dateInfo.initStyle(StageStyle.UNDECORATED);
@@ -310,11 +323,18 @@ public class CalendarController implements Initializable {
     }
 
     private LocalDate getCurrentCalendarUILocalDate(){
+        lastModified.setLastModifiedDay(calendarYearChoice.getValue(),calendarMonthChoice.getValue(),1);
         return LocalDate.of(calendarYearChoice.getValue(),calendarMonthChoice.getValue(),1);
     }
 
     private void initCalButtonText(){
-        for(int r=0;r<ROW_OF_CALENDAR;r++) for(int c=0;c<COL_OF_CALENDAR;c++) calButtonText[r][c].setText("");
+
+        for(int r=0;r<ROW_OF_CALENDAR;r++){
+            for(int c=0;c<COL_OF_CALENDAR;c++){
+                calButtonText[r][c].setText("");
+                calButton[r][c].setDisable(true);
+            }
+        }
     }
 
     @FXML
@@ -327,7 +347,7 @@ public class CalendarController implements Initializable {
         now_month = currentDate.getMonthValue();
 
         setCalendarYearAndMonth(now_year,now_month);
-
+        lastModified.setLastModifiedDay(now_year,now_month,1);
         initCalButtonText();
         loadCalendarButtonDays();
     }
@@ -342,13 +362,14 @@ public class CalendarController implements Initializable {
         now_month = currentDate.getMonthValue();
 
         setCalendarYearAndMonth(now_year,now_month);
-
+        lastModified.setLastModifiedDay(now_year,now_month,1);
         initCalButtonText();
         loadCalendarButtonDays();
     }
 
     private void loadCalendarButtonDays(){
         LocalDate current_date = getCurrentCalendarUILocalDate();
+
         //Initialize
         for(int r=0;r<ROW_OF_CALENDAR;r++) for(int c=0;c<COL_OF_CALENDAR;c++) calButtonText[r][c].setText("");
 
@@ -364,6 +385,7 @@ public class CalendarController implements Initializable {
         //Sunday = 0, Monday = 1, ... , Saturday = 6
         for(int i = 0;i < last_day_of_month;i++){
             int idx = i+firstday_of_week;
+            calButton[idx/COL_OF_CALENDAR][idx%COL_OF_CALENDAR].setDisable(false);
             calButtonText[idx/COL_OF_CALENDAR][idx%COL_OF_CALENDAR].setText((i+1)+"");
         }
 

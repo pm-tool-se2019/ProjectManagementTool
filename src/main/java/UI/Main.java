@@ -13,7 +13,6 @@ public class Main extends Application {
     private Stage stage =null;
     @Override
     public void start(Stage stage) throws Exception {
-        //여기서 에러남
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Main.fxml"));
         Parent main = (Parent)fxmlLoader.load();
         Scene scene = new Scene(main);
