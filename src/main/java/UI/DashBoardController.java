@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -22,17 +23,26 @@ public class DashBoardController implements Initializable {
     @FXML
     VBox personalRecentTask, prjRecentTask;
     @FXML
-    ScrollPane timeline;
+    VBox timeline;
+    @FXML
+    ProgressIndicator personalProgression, projectProgression;
+
+    Double doubleValueOfPersonalProgress= Double.valueOf(0), doubleValueOfProjectProgress=Double.valueOf(0);
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        setTimeline();
+        setPersonalRecentTask();
+        setProjectRecentTask();
+        setPersonalProgression();
+        setProjectProgression();
     }
     //Adding New Task Button Function, New static field Stage Required
     private Stage addStage = new Stage();
     //stage's initial state cannot be initialized twice, this is state check
     private int isStageFirst =0;
     @FXML
-private void testButtonClicked() throws IOException {
+private void testButtonClicked() throws IOException {//testMethod
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TaskInfo.fxml"));
     Parent rootAdd = (Parent)fxmlLoader.load();
     Scene sceneAdd = new Scene(rootAdd);
@@ -45,4 +55,38 @@ private void testButtonClicked() throws IOException {
     }//if end
     addStage.showAndWait();//disable Main stage, Only One Popup available. because of static field stage
 }
+
+    private void setTimeline(){//currently test
+        timeline.getChildren().add(new taskButton());
+        timeline.getChildren().add(new taskButton());
+        timeline.getChildren().add(new taskButton());
+        timeline.getChildren().add(new taskButton());
+        timeline.getChildren().add(new taskButton());
+        timeline.getChildren().add(new taskButton());
+        timeline.getChildren().add(new taskButton());
+
+    }
+    private void setProjectRecentTask(){//get recent three tasks of project
+        //prjRecentTask.getChildren().add(new taskButton());
+    }
+    private void setPersonalRecentTask(){//get recent three tasks of personal task
+        //personalRecentTask.getChildren().add(new taskButton());
+    }
+    private void setPersonalProgression(){
+        if(doubleValueOfPersonalProgress==0){
+            personalProgression.isIndeterminate();
+            return;
+        }
+        personalProgression.setProgress(doubleValueOfPersonalProgress);
+    }
+    private void setProjectProgression(){
+        if(doubleValueOfProjectProgress==0){
+            projectProgression.isIndeterminate();
+            return;
+        }
+        projectProgression.setProgress(doubleValueOfProjectProgress);
+    }
+    public void setDoubleValueOfPersonalProgress(double val){ this.doubleValueOfPersonalProgress = val;}//this value is 0~1, double
+    public void setDoubleValueOfProjectProgress(double val){this.doubleValueOfProjectProgress = val;}
+
 }

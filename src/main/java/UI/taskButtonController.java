@@ -5,9 +5,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -27,7 +30,9 @@ public class taskButtonController implements Initializable{
     VBox backGround;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        taskButton test = new taskButton();
+        buttonListener();
+        //changeBackgroundOnHoverUsingEvents(backGround);
     }
 
     private void buttonListener(){
@@ -60,6 +65,20 @@ public class taskButtonController implements Initializable{
             isStageFirst++;
         }//if end
         addStage.showAndWait();//disable Main stage, Only One Popup available. because of static field stage
+    }
+
+    public void changeBackgroundOnHoverUsingEvents(final Node node) {//Can't use .css on side buttons. So... meh another method of css :hover
+        node.setStyle("-fx-background-color: #ffffff");
+        node.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override public void handle(MouseEvent mouseEvent) {
+                node.setStyle("-fx-background-color: #a4a4a4");
+            }
+        });
+        node.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override public void handle(MouseEvent mouseEvent) {
+                node.setStyle("-fx-background-color: #ffffff");
+            }
+        });
     }
 
 }

@@ -70,7 +70,7 @@
             </HBox>
             <VBox prefHeight="500.0" prefWidth="420.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <ScrollPane prefHeight="499.0" prefWidth="420.0" style="-fx-background-color: #FFFFFF;">
+                  <ScrollPane fx:id="list" prefHeight="499.0" prefWidth="420.0" style="-fx-background-color: #FFFFFF;">
                     <content>
                       <AnchorPane fx:id="scrollAnchor" maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="507.0" prefWidth="403.0" style="-fx-background-color: #FFFFFF;" />
                     </content>
