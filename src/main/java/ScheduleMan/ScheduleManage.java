@@ -26,7 +26,7 @@ public class ScheduleManage{
     /* Current user's task list. This var will be shared with all of other modules. */
     public static ArrayList<Task> current_user_task_list = new ArrayList<>();
 
-    private static Task searchFromTaskList(int id){
+    public static Task searchFromTaskList(int id){
         for(Task t : current_user_task_list){
             if(t.getId()==id){
                 return t;

@@ -14,11 +14,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.DataClass.Task;
 import main.java.ScheduleMan.ScheduleManage;
+import main.java.ScheduleMan.firebase4j.firebasesrc.error.FirebaseException;
 
-import java.security.MessageDigest;
+import java.io.UnsupportedEncodingException;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class NewTaskController implements Initializable {
@@ -52,7 +54,15 @@ public class NewTaskController implements Initializable {
         makeStageDragable();
         componentInit();
 
-        addButton.setOnAction(event -> addButtonClicked());
+        addButton.setOnAction(event -> {
+            try {
+                addButtonClicked();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (FirebaseException e) {
+                e.printStackTrace();
+            }
+        });
         cancelButton.setOnAction(event -> cancelButtonClicked());
     }
 
@@ -104,6 +114,7 @@ public class NewTaskController implements Initializable {
         statelist.addAll("TODO","DOING","DONE");
         stateBox.getItems().addAll(statelist);
         stateBox.setValue("TODO");
+        state_data = "TODO";
         stateBox.getSelectionModel()
                 .selectedItemProperty()
                 .addListener(new ChangeListener<String>() {
@@ -111,7 +122,6 @@ public class NewTaskController implements Initializable {
                     public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                         // For Test
                         state_data = newValue;
-                        System.out.println(state_data);
                     }
                 });
 
@@ -120,6 +130,7 @@ public class NewTaskController implements Initializable {
         hielist.addAll(1,2,3,4,5,6,7,8,9,10);
         hierarchyBox.getItems().addAll(hielist);
         hierarchyBox.setValue(5);
+        hier_data = 5;
         hierarchyBox.getSelectionModel()
                     .selectedItemProperty()
                     .addListener(new ChangeListener<Integer>() {
@@ -134,17 +145,32 @@ public class NewTaskController implements Initializable {
 
     }
 
+    private int makeId(){
+        Random generator = new Random();
+        int tempid;
+        while(true){
+            tempid = generator.nextInt(1000000)+1;
+            if(ScheduleManage.searchFromTaskList(tempid) != null){
+                continue;
+            }
+            break;
+        }
+        return tempid;
+    }
 
-    public void addButtonClicked() {
+
+    public void addButtonClicked() throws UnsupportedEncodingException, FirebaseException {
         String task_name = taskName.getText();
         String task_desc = Descriptions.getText();
         LocalDate startDate_ld = startDate.getValue();
         LocalDate endDate_ld = endDate.getValue();
 
-        Integer id = 0; // temp
+
+        Integer id = makeId();
 
         Task t = new Task(id, task_name, task_desc, startDate_ld.getYear(),startDate_ld.getMonthValue(), startDate_ld.getDayOfMonth(),
                 endDate_ld.getYear(),endDate_ld.getMonthValue(),endDate_ld.getDayOfMonth(),state_data,hier_data);
+        ScheduleManage.addTask(t);
 
         this.stage.close();
     }
