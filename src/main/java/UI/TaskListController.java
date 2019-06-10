@@ -20,8 +20,4 @@ public class TaskListController{
     
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TaskList.fxml"));
 
-
-
-
-
 }

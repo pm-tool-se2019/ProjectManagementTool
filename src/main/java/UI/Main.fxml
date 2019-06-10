@@ -119,6 +119,11 @@
             <DropShadow blurType="ONE_PASS_BOX" height="10.0" radius="4.5" width="10.0" />
          </effect>
          <children>
+            <HBox prefHeight="80.0" prefWidth="1232.0">
+               <children>
+                  <Button fx:id="demoButton" mnemonicParsing="false" onAction="#demoButtonClicked" prefHeight="78.0" prefWidth="117.0" styleClass="justTransparent" stylesheets="@ui.css" />
+               </children>
+            </HBox>
             <Button fx:id="exitButton" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#exitButtonClicked" prefHeight="25.0" prefWidth="30.0" styleClass="mainCloseButton" stylesheets="@ui.css" text="exitButton" textFill="WHITE">
                <graphic>
                   <FontAwesomeIconView fx:id="mainCloseButtonASI" fill="#404040" glyphName="CLOSE" size="30" strokeLineCap="ROUND" strokeLineJoin="ROUND" styleClass="mainCloseButtonASI" />

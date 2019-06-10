@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package main.java.UI;
 
 import javafx.beans.value.ChangeListener;

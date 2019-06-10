@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -22,6 +23,9 @@ public class CalendarDateController implements Initializable{
     private AnchorPane parent, scrollAnchor;
     @FXML
     private ScrollPane list;
+    @FXML
+    private Text calYear, calMonth, calDate;
+
     private Stage stage;
     public void initialize(URL location, ResourceBundle resources) {
         makeStageDragable();
@@ -69,5 +73,17 @@ public class CalendarDateController implements Initializable{
     private void setTaskList(){//initialize
         scrollAnchor.getChildren().add(new taskButton());//testMethod
     }
+    public void setDate(String Year, String Month, String Date){//set title Date
+        calYear.setText(Year);
+        calMonth.setText(Month);
+        calDate.setText("10");
+    }
+
+    private void getDate(){
+
+    }
+
+
+
 
 }

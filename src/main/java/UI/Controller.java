@@ -12,13 +12,17 @@ import javafx.scene.layout.*;
 import javafx.event.*;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import main.java.DataClass.Task;
 import main.java.ScheduleMan.ScheduleManage;
+import main.java.ScheduleMan.firebase4j.firebasesrc.error.FirebaseException;
 
 public class Controller implements Initializable {
     //Model
@@ -31,12 +35,11 @@ public class Controller implements Initializable {
     @FXML
     private Pane mainScene;
     @FXML
-    private Button addNew, exitButton, dashboardButton, calendarButton, teamButton ;
+    private Button addNew, exitButton, dashboardButton, calendarButton, teamButton, demoButton ;
     @FXML
     private HBox sideBtnDashboard, sideBtnTeam, sideBtnCalendar;
     //implements components, Controller of Main Scene Initial State
     private Stage stage;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         makeStageDragable();
@@ -55,6 +58,11 @@ public class Controller implements Initializable {
         }else {
             sideBtnDashboard.setStyle("-fx-background-color: #00336a");
         }
+
+        ScheduleManage.current_user_task_list = new ArrayList<Task>();
+
+        //Task(int id, String task_name, String description, int start_year, int start_month, int start_day, int end_year, int end_month, int end_day, String state, int hierarchy)
+        Task ttt = new Task(32,"NewTask20190610", "I want go home", 2019,6,10,2019,6,11,"TODO",0);
     }
     //set stage, this function SHOULD be used in parent Class
     public void setStage(Stage stage){
@@ -187,6 +195,10 @@ public class Controller implements Initializable {
                 node.setStyle("-fx-background-color: #1385ff");
             }
         });
+    }
+    @FXML
+    private void demoButtonClicked(){
+
     }
 
 
