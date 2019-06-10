@@ -183,10 +183,11 @@ public class TaskInfoController implements Initializable {
 
     private Task getTask(String name_of_task){
         for(Task t: ScheduleManage.current_user_task_list){
-            if(t.getTaskName() == name_of_task){
+            if(t.getTaskName().equals(name_of_task)){
                 return t;
             }
         }
+        System.out.println("Fail to find Task from getTask method.");
         return null; // Exceptioon.
     }
 }
