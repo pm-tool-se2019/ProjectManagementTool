@@ -11,6 +11,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import main.java.DataClass.Task;
+import main.java.ScheduleMan.ScheduleManage;
 
 import java.awt.*;
 import java.io.IOException;
@@ -56,15 +58,16 @@ private void testButtonClicked() throws IOException {//testMethod
     addStage.showAndWait();//disable Main stage, Only One Popup available. because of static field stage
 }
 
-    private void setTimeline(){//currently test
-        timeline.getChildren().add(new taskButton());
-        timeline.getChildren().add(new taskButton());
-        timeline.getChildren().add(new taskButton());
-        timeline.getChildren().add(new taskButton());
-        timeline.getChildren().add(new taskButton());
-        timeline.getChildren().add(new taskButton());
-        timeline.getChildren().add(new taskButton());
+    private void setTimeline() {//currently test
+        //timeline.getChildren().add(new taskButton());
+        for (int i = 0; i < ScheduleManage.current_user_task_list.size(); i++) {
+            Task temp = ScheduleManage.current_user_task_list.get(i);
 
+            taskButton tb = new taskButton();
+            //public void setText(String Name, String startDate, String endDate, String description)
+            tb.setText(temp.getTaskName(), temp.getStartYear() + "." + temp.getStartMonth() + "." + temp.getStartDay(), temp.getEndYear() + "." + temp.getEndMonth() + "." + temp.getEndDay(), temp.getDescription());
+            timeline.getChildren().add(tb);
+        }
     }
     private void setProjectRecentTask(){//get recent three tasks of project
         //prjRecentTask.getChildren().add(new taskButton());

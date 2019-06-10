@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.time.*;
 import java.util.ArrayList;
 
@@ -30,6 +31,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import main.java.Calendar.*;
+import main.java.ScheduleMan.ScheduleManage;
+import main.java.ScheduleMan.firebase4j.firebasesrc.error.FirebaseException;
 
 public class CalendarController implements Initializable {
 
@@ -74,6 +77,14 @@ public class CalendarController implements Initializable {
         loadYearChoice(calendar.getNowYear());
         setCalendarButtonListener();
         setCalendarDate();
+        try {
+            ScheduleManage.fetchAllFromDB();
+        } catch (FirebaseException e){
+            //
+        }
+        catch (UnsupportedEncodingException e){
+            //
+        }
         lastModified = LastModified.getInstance(calendar.getNowYear(),calendar.getNowMonthValue(),calendar.getNowDayOfMonth());
 
         initCalButtonText();

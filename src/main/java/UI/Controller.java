@@ -61,6 +61,15 @@ public class Controller implements Initializable {
 
         ScheduleManage.current_user_task_list = new ArrayList<Task>();
 
+        try {
+            ScheduleManage.fetchAllFromDB();
+        } catch (FirebaseException e){
+            //
+        }
+        catch (UnsupportedEncodingException e){
+            //
+        }
+
         //Task(int id, String task_name, String description, int start_year, int start_month, int start_day, int end_year, int end_month, int end_day, String state, int hierarchy)
         Task ttt = new Task(32,"NewTask20190610", "I want go home", 2019,6,10,2019,6,11,"TODO",0);
     }
